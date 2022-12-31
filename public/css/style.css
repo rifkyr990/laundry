@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Quicksand:wght@400;600;700&display=swap');
+
+html {
+    overflow-x: hidden;
+}
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.bg-blue {
+    background-color: #066fd0;
+}
+
+.image {
+    width: 550px;
+}
+
+.rounded-lg {
+    border-radius: 1rem !important;
+}
+
+.text-small {
+    font-size: 0.9rem !important;
+}
+
+.image-content {
+    width: 380px;
+}
+
+.custom-separator {
+    width: 5rem;
+    height: 6px;
+    border-radius: 1rem;
+}
+
+.card-text {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-uppercase {
+    letter-spacing: 0.2em;
+}
+
+.card-glas {
+    background: rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.css-button-rounded--green {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #066fd0;
+    background: #066fd0;
+}
+
+.css-button-rounded--green:hover {
+    background: #fff;
+    color: #066fd0;
+}
+
+.top {
+    top: 30%;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 5px 6px 6px 2px #e9ecef
+}
+
+.heading {
+    font-size: 23px;
+    font-weight: 00
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b1b6bd
+}
+
+.business {
+    font-size: 20px;
+    font-weight: 500
+}
+
+.plan {
+    color: #aba4a4
+}
+
+.dollar {
+    font-size: 16px;
+    color: #6b6b6f
+}
+
+.amount {
+    font-size: 50px;
+    font-weight: 500
+}
+
+.year {
+    font-size: 20px;
+    color: #6b6b6f;
+    margin-top: 19px
+}
+
+.detail {
+    font-size: 22px;
+    font-weight: 500
+}
+
+.cvv {
+    height: 44px;
+    width: 73px;
+    border: 2px solid #eee
+}
+
+.cvv:focus {
+    box-shadow: none;
+    border: 2px solid #304FFE
+}
+
+.email-text {
+    height: 55px;
+    border: 2px solid #eee
+}
+
+.email-text:focus {
+    box-shadow: none;
+    border: 2px solid #304FFE
+}
+
+.payment-button {
+    height: 70px;
+    font-size: 20px
+}
+
+.icon-feature {
+    color: #066fd0;
+}
+
+/*--------------------------------------------------------------
+  # Hero Section
+  --------------------------------------------------------------*/
+#hero {
+    width: 100%;
+    background: url("../img/hero-bg.jpg");
+    position: relative;
+    padding: 120px 0 0 0;
+}
+
+#hero:before {
+    content: "";
+    background: #233ed3;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#hero h1 {
+    margin: 0 0 20px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#hero h1 span {
+    color: #fff;
+    border-bottom: 4px solid #1acc8d;
+}
+
+#hero h2 {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    font-size: 24px;
+}
+
+#hero .btn-get-started {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: #fff;
+    background: #1acc8d;
+}
+
+#hero .btn-get-started:hover {
+    background: #17b57d;
+}
+
+#hero .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (min-width: 1024px) {
+    #hero {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 991px) {
+    #hero {
+        padding-top: 80px;
+    }
+
+    #hero .animated {
+        -webkit-animation: none;
+        animation: none;
+    }
+
+    #hero .hero-img {
+        text-align: center;
+    }
+
+    #hero .hero-img img {
+        max-width: 50%;
+    }
+
+    #hero h1 {
+        font-size: 28px;
+        line-height: 32px;
+        margin-bottom: 10px;
+    }
+
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 575px) {
+    #hero .hero-img img {
+        width: 80%;
+    }
+}
+
+@-webkit-keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes up-down {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+.hero-waves {
+    display: block;
+    margin-top: 60px;
+    width: 100%;
+    height: 60px;
+    z-index: 5;
+    position: relative;
+}
+
+.wave1 use {
+    -webkit-animation: move-forever1 10s linear infinite;
+    animation: move-forever1 10s linear infinite;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+}
+
+.wave2 use {
+    -webkit-animation: move-forever2 8s linear infinite;
+    animation: move-forever2 8s linear infinite;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+}
+
+.wave3 use {
+    -webkit-animation: move-forever3 6s linear infinite;
+    animation: move-forever3 6s linear infinite;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+}
+
+@-webkit-keyframes move-forever1 {
+    0% {
+        transform: translate(85px, 0%);
+    }
+
+    100% {
+        transform: translate(-90px, 0%);
+    }
+}
+
+@keyframes move-forever1 {
+    0% {
+        transform: translate(85px, 0%);
+    }
+
+    100% {
+        transform: translate(-90px, 0%);
+    }
+}
+
+@-webkit-keyframes move-forever2 {
+    0% {
+        transform: translate(-90px, 0%);
+    }
+
+    100% {
+        transform: translate(85px, 0%);
+    }
+}
+
+@keyframes move-forever2 {
+    0% {
+        transform: translate(-90px, 0%);
+    }
+
+    100% {
+        transform: translate(85px, 0%);
+    }
+}
+
+@-webkit-keyframes move-forever3 {
+    0% {
+        transform: translate(-90px, 0%);
+    }
+
+    100% {
+        transform: translate(85px, 0%);
+    }
+}
+
+@keyframes move-forever3 {
+    0% {
+        transform: translate(-90px, 0%);
+    }
+
+    100% {
+        transform: translate(85px, 0%);
+    }
+}
+
+/* Create Order */
+@media screen and (max-width: 768px) {
+    .image-content {
+        width: 100%;
+    }
+
+    .hide img {
+        display: none;
+    }
+
+    .image img {
+        width: 100%;
+    }
+
+    .top {
+        top: 65%;
+    }
+}
