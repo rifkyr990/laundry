@@ -17,7 +17,7 @@
             <div class="card p-5">
                 <div>
                     <h4 class="heading">Pembayaran</h4>
-                    <p class="text">Silahkan memilih salah satu metode pembayaran dibawah ini, dan mohon melakukan
+                    <p class="text">Silahkan memilih salah satu metode pembayaran dibawah ini, mohon melakukan
                         konfirmasi setelah pembayaran berhasil</p>
                 </div>
                 <span class="detail mt-3">Metode Pembayaran :</span>
