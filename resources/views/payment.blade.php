@@ -12,8 +12,8 @@
 </head>
 
 <body>
-    <section class="method-payment py-2">
-        <div class="container mt-5 mb-5 d-flex justify-content-center">
+    <section class="method-payment">
+        <div class="d-flex align-items-center justify-content-center vh-100">
             <div class="card p-5">
                 <div>
                     <h4 class="heading">Pembayaran</h4>
