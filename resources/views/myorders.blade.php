@@ -9,7 +9,7 @@
     <div class="row">
         @foreach($finishes as $data)
             <div class="col-sm-4">
-                <div class="bg-light shadow-sm pt-4 px-4 my-5">
+                <div class="bg-light shadow-sm pt-4 px-4 my-4">
                     <ul style="list-style: none; padding:0;">
                     
                         <form action="{{ route('finishorder', $data->id) }}" method="post" enctype="multipart/form-data">
