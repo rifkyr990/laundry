@@ -169,6 +169,4 @@ class ProductController extends Controller
 
         return redirect()->route('create')->with('success', 'Orderan berhasil dihapus');
     }
-
-    
 }

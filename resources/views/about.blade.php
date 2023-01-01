@@ -17,27 +17,29 @@
             <div class="d-flex justify-content-center align-items-center vh-100">
                 <div class="row">
                     <div class="col-sm-6">
-                        <img src="{{ asset('assets/image/laundry-header.png') }}" class="card-img-top w-100">
+                        <img src="{{ asset('assets/image/laundry-header.png') }}"
+                            class="card-img-top w-100">
                     </div>
                     <div class="col-sm-6">
                         <h2 class="fw-bold">
                             <h2 class="fw-bold text-dark">Laundry</h2>
                             <p class="text-dark">
-                                Laundry Express merupakan aplikasi pengenalan hewan, aplikasi ini ditujukan untuk anak-anak
+                                Laundry Express merupakan aplikasi pengenalan hewan, aplikasi ini ditujukan untuk
+                                anak-anak
                                 maupun dewasa yang memiliki keinginnan untuk mengenali suara hewan,aplikasi ini di
                                 kembangkan oleh <strong>Rifky Ramadhan</strong> seorang <strong>Web Developer</strong>.
                                 dan aplikasi ini dikembangkan sejak tanggal 12 Desember 2022 kemarin.
                             </p>
                             <a href="{{ route('create') }}"
-                            class="css-button-rounded--green btn-block p-2 px-3 shadow-sm text-decoration-none text-center position-absolute"
-                            data-aos="flip-down" data-aos-duration="1000" style="bottom: 210px;">Order Sekarang</a>
+                                class="css-button-rounded--green btn-block p-2 px-3 shadow-sm text-decoration-none text-center position-absolute"
+                                data-aos="flip-down" data-aos-duration="1000" style="bottom: 210px;">Order Sekarang</a>
                         </h2>
                     </div>
                 </div>
             </div>
         </section>
 
-<!-- Start Team About -->
+        <!-- Start Team About -->
 
         <section class="team-project">
             <h2 class="fw-bold text-center my-3">Team Project</h2>
@@ -46,7 +48,8 @@
                 <div class="row mx-auto">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="bg-white rounded-sm shadow" data-aos="zoom-in" data-aos-duration="1000">
-                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}"
+                                alt="Card image cap">
                             <div class="card-body text-center mt-3">
                                 <h5 class="card-title text-dark text-center fw-bold fs-4">Rifky Ramadhan</h5>
                                 <p class="card-text text-dark text-center" style="font-size: 14px;">Fullstack Developer
@@ -68,7 +71,8 @@
 
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="bg-white rounded-sm shadow" data-aos="zoom-in" data-aos-duration="1000">
-                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}"
+                                alt="Card image cap">
                             <div class="card-body text-center mt-3">
                                 <h5 class="card-title text-dark text-center fw-bold fs-4">Rifky Ramadhan</h5>
                                 <p class="card-text text-dark text-center" style="font-size: 14px;">Fullstack Developer
@@ -90,7 +94,8 @@
 
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="bg-white rounded-sm shadow" data-aos="zoom-in" data-aos-duration="1000">
-                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}" alt="Card image cap">
+                            <img class="card-img-top" src="{{ asset('assets/image/aing.jpg') }}"
+                                alt="Card image cap">
                             <div class="card-body text-center mt-3">
                                 <h5 class="card-title text-dark text-center fw-bold fs-4">Rifky Ramadhan</h5>
                                 <p class="card-text text-dark text-center" style="font-size: 14px;">Fullstack Developer
@@ -113,9 +118,9 @@
             </div>
         </section>
 
-<!-- End Team About -->
+        <!-- End Team About -->
 
-<!-- Start footer -->
+        <!-- Start footer -->
 
         <footer class="pt-4 my-md-5 pt-md-5 border-top" id="about">
             <div class="container">
@@ -157,7 +162,7 @@
             </div>
         </footer>
 
-<!-- End Footer -->
+        <!-- End Footer -->
 
     </div>
 </body>

@@ -7,7 +7,7 @@
 
 
     <div class="row">
-        @foreach($products as $data)
+        @foreach($finishes as $data)
             <div class="col-sm-4">
                 <div class="bg-light shadow-sm pt-4 px-4 my-5">
                     <ul style="list-style: none; padding:0;">
@@ -28,7 +28,6 @@
 
                             <div class="d-flex justify-content-end mt-3 pb-3">
                                 <a href="" class="btn btn-danger mx-2">Complaint</a>
-                                <button type="submit" class="btn btn-primary">Selesai</button>
                             </div>
                         </form>
                     </ul>

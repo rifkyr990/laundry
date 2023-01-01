@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Owner;
+use App\Models\Finish;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OwnerController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -44,20 +48,38 @@ class OwnerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function finishorder($id)
     {
-        //
+        $product = Product::find($id);
+
+        $finish = new Finish;
+        
+        $finish->owner_id = $product->owner_id;
+        $finish->tanggal = $product->tanggal;
+        $finish->berat = $product->berat;
+        $finish->category_id = $product->category_id;
+        $finish->jenis_id = $product->jenis_id;
+        $finish->status_id = $product->status_id;
+        $finish->pembayaran_id = $product->pembayaran_id;
+        $finish->user_id = $product->user_id;
+        $finish->save();
+
+        $product->delete();
+
+        return redirect()->back()->with('success', 'berhasil');
     }
 
+    
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function show(Owner $owner)
-    {
-        //
+    public function finish(Finish $finish) {
+        $finishes = Finish::where('user_id', Auth::id())->get();
+        
+        return view('myorders', compact('finishes'));
     }
 
     /**
