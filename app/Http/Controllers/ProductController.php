@@ -88,7 +88,7 @@ class ProductController extends Controller
         $product->user_id = auth()->id();
         $product->save();
 
-        return redirect()->route('detail', $product->id)->with('success', 'berhasil');
+        return redirect()->route('detail', $product->id)->with('success', 'Pesanan berhasil diinput!');
     }
 
     /**

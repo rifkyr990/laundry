@@ -20,7 +20,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                     <div data-aos="zoom-out">
-                        <h1>Let's laundry here Now <span>Laundry45</span></h1>
+                        <h1>Let's laundry here Now <span>LaundryGo</span></h1>
                         <h2>We are team of talented designers making websites with Bootstrap</h2>
                         <div class="text-center text-lg-start">
                             <a href="#service" class="btn-get-started scrollto text-decoration-none">Order Now</a>
@@ -263,8 +263,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md">
-                    <img src="{{ asset('assets/image/logo.png') }}" width="150px">
-                    <small class="d-block text-muted">&copy; 2017-2018</small>
+                    <img src="{{ asset('assets/image/logo-fix.png') }}" width="150px">
+                    <small class="d-block text-muted">&copy; 2022-2023</small>
                 </div>
                 <div class="col-4 col-md">
                     <h5>Features</h5>

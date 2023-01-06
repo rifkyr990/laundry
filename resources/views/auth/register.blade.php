@@ -7,7 +7,7 @@
         <div class="container">
             <div class="form d-flex justify-content-center align-items-center vh-100">
                 <div class="row">
-                    <div class="col-sm-12 px-5 py-3 bg-light text-dark rounded-2 shadow-lg">
+                    <div class="col-sm-12 px-5 bg-light text-dark rounded-2 shadow-lg">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="row mb-3 py-1">

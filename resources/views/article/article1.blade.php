@@ -11,8 +11,8 @@
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
-<body class="stackedit">
-  <div class="stackedit__html mt-2"><h1 id="cara-menghilangkan-bau-apek-pada-baju-dengan-bahan-rumahan-coba-yuk" class="fw-bold">7 Cara Menghilangkan Bau Apek pada Baju dengan Bahan Rumahan, Coba Yuk!</h1>
+<body class="stackedit pt-5">
+  <div class="stackedit__html mt-2 fw-bold mt-5"><h1 id="cara-menghilangkan-bau-apek-pada-baju-dengan-bahan-rumahan-coba-yuk" class="fw-bold">7 Cara Menghilangkan Bau Apek pada Baju dengan Bahan Rumahan, Coba Yuk!</h1>
 <p>Bisa dihilangkan dengan bahan alami lho, Moms!</p>
 <p><img src="https://cdf.orami.co.id/unsafe/cdn-cas.orami.co.id/parenting/images/cara-menghilangkan-bau-apek-pad.width-800.jpegquality-80_2KAK2Sk.jpg" alt="7 Cara Menghilangkan Bau Apek pada Baju dengan Bahan Rumahan, Coba Yuk!"></p>
 <p>Baju sering kali mengeluarkan bau apek. Biasanya hal ini disebabkan karena telalu lama disimpan atau proses pengeringan yang tidak sempurna.</p>

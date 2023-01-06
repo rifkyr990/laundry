@@ -43,6 +43,8 @@ Route::delete('/{product}', [App\Http\Controllers\ProductController::class, 'des
 
 Route::delete('/{owner}', [App\Http\Controllers\OwnerController::class, 'destroy'])->name('destroy');
 Route::get('/payment', [App\Http\Controllers\OwnerController::class, 'index'])->name('payment');
+Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])->name('confirm');
+Route::post('/addconfirm', [App\Http\Controllers\OwnerController::class, 'addconfirm'])->name('addconfirm');
 
 Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('create');
 Route::post('/finishorder/{product}', [App\Http\Controllers\OwnerController::class, 'finishorder'])->name('finishorder');

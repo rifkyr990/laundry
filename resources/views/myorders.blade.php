@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2 class="text-center fw-bold mt-5 pt-5">Pesanan Saya</h2>
+    <h2 class="text-center fw-bold mt-5 pt-5">Pesanan Selesai</h2>
     <div class="custom-separator mx-auto my-2 mb-4 bg-primary"></div>
 
 

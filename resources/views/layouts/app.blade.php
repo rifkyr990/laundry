@@ -18,10 +18,10 @@
     <!-- Fonts -->
     <!-- Styles -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- CSS only -->
-    
+
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,11 +35,11 @@
 
 <body>
     <div id="app">
-    @if(Auth::check())
+        @if(Auth::check())
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/image/logo.png') }}" width="100px">
+                    <img src="{{ asset('assets/image/logo-fix.png') }}" width="100px">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -49,7 +49,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto mt-0">
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
@@ -64,11 +64,16 @@
                         </li>
                         @endif
                         @else
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="{{ route('home') }}">Home</a></li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#service">Services</a></li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#article">Article</a></li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#location">Location</a></li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="{{ route('about') }}">About</a></li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
+                                href="{{ route('home') }}">Home</a></li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#service">Services</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#article">Article</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#location">Location</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
+                                href="{{ route('about') }}">About</a></li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle fw-bold" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -76,10 +81,17 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('myorders') }}">Pesanan Selesai</a>
-                                <a class="dropdown-item" href="{{ route('myorder') }}">Pesanan saya</a>
+                                <a class="dropdown-item" href="{{ route('product') }}"><i
+                                        class="bi bi-archive-fill"></i> Dashboard</a>
+                                <a class="dropdown-item" href="{{ route('confirm') }}"><i
+                                        class="bi bi-credit-card-fill"></i> Konfirmasi Pembayaran</a>
+                                <a class="dropdown-item" href="{{ route('myorders') }}"><i
+                                        class="bi bi-bag-check-fill"></i> Pesanan Selesai</a>
+                                <a class="dropdown-item" href="{{ route('myorder') }}"><i
+                                        class="bi bi-basket3-fill"></i> Pesanan Saya</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();"><i
+                                        class="bi bi-box-arrow-right"></i>
                                     {{ __('Logout') }}
                                 </a>
 
@@ -93,7 +105,7 @@
                 </div>
             </div>
         </nav>
-@endif
+        @endif
         <main>
             @yield('content')
         </main>
@@ -105,6 +117,9 @@
         AOS.init();
 
     </script>
+
+    @include('sweetalert::alert')
+
 </body>
 
 </html>
