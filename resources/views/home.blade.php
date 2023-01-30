@@ -21,7 +21,7 @@
                 <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                     <div data-aos="zoom-out">
                         <h1>Let's laundry here Now <span>LaundryGo</span></h1>
-                        <h2>We are team of talented designers making websites with Bootstrap</h2>
+                        <h2>Budayakan malas mencuci,karena mencuci merupakan tugas utama kami</h2>
                         <div class="text-center text-lg-start">
                             <a href="#service" class="btn-get-started scrollto text-decoration-none">Order Now</a>
                         </div>
@@ -62,15 +62,15 @@
                                     <div class="text-center">
                                         <i class="bi-phone icon-feature text-gradient d-block mb-3 fa-5x"></i>
                                         <h3 class="font-alt">Device Mockups</h3>
-                                        <p class="text-muted mb-0">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                                        <p class="text-muted mb-0">Dapat digunakan oleh seluruh perangkat gadget</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-5">
                                     <!-- Feature item-->
                                     <div class="text-center">
                                         <i class="bi-truck icon-feature text-gradient d-block mb-3 fa-5x"></i>
-                                        <h3 class="font-alt">Flexible Use</h3>
-                                        <p class="text-muted mb-0">Put an image, video, animation, or anything else in the screen!</p>
+                                        <h3 class="font-alt">Free delivery</h3>
+                                        <p class="text-muted mb-0">Gratis antar jemput maksimal 2km dari tempat laundry</p>
                                     </div>
                                 </div>
                             </div>
@@ -79,8 +79,8 @@
                                     <!-- Feature item-->
                                     <div class="text-center">
                                         <i class="bi-gift icon-feature text-gradient d-block mb-3 fa-5x"></i>
-                                        <h3 class="font-alt">Free to Use</h3>
-                                        <p class="text-muted mb-0">As always, this theme is free to download and use for any purpose!</p>
+                                        <h3 class="font-alt">Kupon gratis</h3>
+                                        <p class="text-muted mb-0">Dapatkan kupon atau voucher gratis setiap pemesanan</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -109,12 +109,10 @@
         <div class="container justify-content-center">
             <div class="d-block mx-auto">
                 <h2 class="fw-bold fs-1 text-center">Services</h2>
+                <div class="custom-separator mx-auto my-2 mb-4 bg-primary"></div>
                 <p class="text-muted text-center fs-5 my-4">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, autem eaque a eveniet cumque
-                    laborum
-                    dolorum consectetur ut, recusandae soluta eligendi libero repellat voluptate debitis dolore quae
-                    ipsum?
-                    In, eaque?
+                    berbagai jenis layanan kami sediakan, anda dapat memilih salah satu layanan yang sesuai dengan anda. <br>
+                    pilih salah satu layanan dibawah ini
                 </p>
             </div>
 
@@ -204,12 +202,10 @@
                 <h2 class="fw-bold text-center fs-1">
                     Article
                 </h2>
+                <div class="custom-separator mx-auto my-2 mb-4 bg-primary"></div>
                 <p class="text-muted text-center m-4 fs-5">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, autem eaque a eveniet cumque
-                    laborum
-                    dolorum consectetur ut, recusandae soluta eligendi libero repellat voluptate debitis dolore quae
-                    ipsum?
-                    In, eaque?
+                    beberapa tips & trik yang sesuai dengan kebutuhan anda,anda dapat membaca artikel <br>
+                    kami dan jelajahi seluruh isinya.
                 </p>
             </div>
             <div class="row">
@@ -246,7 +242,7 @@
                     Location Info
                 </h2>
             </div>
-            <div class="custom-separator my-4 mx-auto bg-primary"></div>
+            <div class="custom-separator my-2 mb-3 mx-auto bg-primary"></div>
             <div class="d-flex justify-content-center">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.3116571143655!2d110.37155698681553!3d-7.8624173173700305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a571137136b55%3A0x59bb36bbcbc3cc0a!2s45%20Laundry!5e0!3m2!1sid!2sid!4v1671052030922!5m2!1sid!2sid"

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Owner;
-use App\Models\Product;
 use App\Models\Jenis;
+use App\Models\Owner;
+use App\Models\Finish;
 use App\Models\Status;
-use App\Models\Pembayaran;
+use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Foundation\Auth\User;
+use App\Models\Complaint;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 
@@ -21,7 +23,11 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
+        $finish = Finish::all();
+        $complaint = Complaint::all();
+        $pelanggan = Owner::all();
+
         $jenis = Jenis::with('products')->get();
         $pembayaran = Pembayaran::with('products')->get();
         $categories = Category::with('products')->get();
@@ -29,7 +35,7 @@ class ProductController extends Controller
         $owner = Owner::with('products')->get();
         $products = Product::with('jenis','category', 'status', 'owner')->get();
 
-        return view('product', compact('jenis','pembayaran','categories', 'statuses', 'owner', 'products'));
+        return view('product', compact('jenis','pembayaran','categories', 'statuses', 'owner', 'products', 'pelanggan', 'finish', 'complaint'));
     }
     
     /**
