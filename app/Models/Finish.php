@@ -4,16 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Jenis;
-use App\Models\Pembayaran;
-use App\Models\Category;
-use App\Models\Status;
-use App\Models\Owner;
 
 class Finish extends Model
 {
     use HasFactory;
-    
+
     public function jenis()
     {
         return $this->belongsTo(Jenis::class);

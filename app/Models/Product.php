@@ -4,15 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Jenis;
-use App\Models\Pembayaran;
-use App\Models\Category;
-use App\Models\Status;
-use App\Models\Owner;
 
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'jenis',
         'tanggal',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -30,7 +31,6 @@ class HomeController extends Controller
     public function article()
     {
         $articles = Article::all();
-
         return view('home', compact('articles'));
     }
 
@@ -52,5 +52,16 @@ class HomeController extends Controller
     public function about()
     {
         return view('about');
+    }
+
+    public function lacak(Request $request) {
+        $orderId = $request->input('order_id');
+        $product = Product::where('id', $orderId)->first();
+
+        if ($product) {
+            return view('home', ['product' => $product]);
+        } else {
+            return view('home', ['product' => null]);
+        }
     }
 }

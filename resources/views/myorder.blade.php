@@ -22,7 +22,6 @@
                     </li>
                     
                     <div class="d-flex justify-content-end mt-3 pb-3">
-                        <a href="" class="btn btn-danger mx-2">Complaint</a>
                         <a href="" class="btn btn-primary mx-2" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">Selesai</a>
                     </div>

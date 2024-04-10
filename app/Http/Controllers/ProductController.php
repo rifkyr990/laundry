@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Owner;
-use App\Models\Product;
-use App\Models\Jenis;
-use App\Models\Status;
-use App\Models\Pembayaran;
 use App\Models\Category;
-use Illuminate\Foundation\Auth\User;
+use App\Models\Complaint;
+use App\Models\Finish;
+use App\Models\Jenis;
+use App\Models\Owner;
+use App\Models\Pembayaran;
+use App\Models\Product;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class ProductController extends Controller
 {
@@ -21,17 +21,21 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
+        $finish = Finish::all();
+        $complaint = Complaint::all();
+        $pelanggan = Owner::all();
+
         $jenis = Jenis::with('products')->get();
         $pembayaran = Pembayaran::with('products')->get();
         $categories = Category::with('products')->get();
         $statuses = Status::with('products')->get();
         $owner = Owner::with('products')->get();
-        $products = Product::with('jenis','category', 'status', 'owner')->get();
+        $products = Product::with('jenis', 'category', 'status', 'owner')->get();
 
-        return view('product', compact('jenis','pembayaran','categories', 'statuses', 'owner', 'products'));
+        return view('product', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan', 'finish', 'complaint'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,19 +49,18 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-
-    public function myOrder(Product $product) {
+    public function myOrder(Product $product)
+    {
         $products = Product::where('user_id', Auth::id())->get();
-        
+
         return view('myorder', compact('products'));
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -94,7 +97,6 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -105,7 +107,6 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function detail(Product $product)
@@ -116,7 +117,6 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -126,14 +126,12 @@ class ProductController extends Controller
         $categories = Category::all();
         $status = Status::all();
 
-        return view('edit', compact('pembayaran','jenis','categories','status','product'));
+        return view('edit', compact('pembayaran', 'jenis', 'categories', 'status', 'product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -141,13 +139,12 @@ class ProductController extends Controller
         $input = $request->all();
         $product->update($input);
 
-        return redirect()->route('product')->with('success','Orderan sudah di update');
+        return redirect()->route('product')->with('success', 'Orderan sudah di update');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
@@ -160,7 +157,6 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function cancel(Product $product)
@@ -168,5 +164,23 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('create')->with('success', 'Orderan berhasil dihapus');
+    }
+
+
+    public function trackOrder()
+    {
+        return view('track');
+    }
+
+    public function processOrder(Request $request)
+    {
+        $orderId = $request->input('order_id');
+        $product = Product::find($orderId);
+
+        if ($product) {
+            return view('track', ['product' => $product]);
+        } else {
+            return view('track', ['product' => null]);
+        }
     }
 }

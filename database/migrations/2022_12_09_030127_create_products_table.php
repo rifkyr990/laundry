@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('total')->nullable();
             $table->integer('jenis_id');
             $table->integer('category_id');
-            
+
             $table->integer('pembayaran_id')->default('1');
             $table->integer('status_id')->default('1');
             $table->unsignedBigInteger('owner_id');

@@ -21,16 +21,16 @@
                     </div>
                     <div class="col-sm-6">
                         <h2 class="fw-bold">
-                            <h2 class="fw-bold text-dark">Laundry</h2>
+                            <h2 class="fw-bold text-dark">About Apps</h2>
                             <p class="text-dark">
-                                Laundry Express merupakan aplikasi pengenalan hewan, aplikasi ini ditujukan untuk
-                                anak-anak
-                                maupun dewasa yang memiliki keinginnan untuk mengenali suara hewan,aplikasi ini di
-                                kembangkan oleh <strong>Rifky Ramadhan</strong> seorang <strong>Web Developer</strong>.
-                                dan aplikasi ini dikembangkan sejak tanggal 12 Desember 2022 kemarin.
+                                Laundry Express merupakan aplikasi pemesanan laundry berbasis website, aplikasi ini ditujukan untuk
+                                ditujukan untuk memudahkan pemesanan laundry tanpa harus datang ke tempat,aplikasi ini di
+                                buat sejak tanggal 12 Desember 2022 kemarin oleh <strong>Rifky Ramadhan</strong> seorang <strong>Web Developer</strong>.
+                                selain itu dibalik jadinya aplikasi terdapat pemeran lain diantaranya ada <strong>Akbar pratama suryamin</strong> sebagai designer apps
+                                serta <strong>Apridan husaen muharam</strong> sebagai data analyst system.
                             </p>
                             <a href="{{ route('create') }}"
-                                class="css-button-rounded--green btn-block p-2 px-3 shadow-sm text-decoration-none text-center position-absolute"
+                                class="btn-order css-button-rounded--green btn-block p-2 px-3 shadow-sm text-decoration-none text-center position-absolute"
                                 data-aos="flip-down" data-aos-duration="1000" style="bottom: 210px;">Order Sekarang</a>
                         </h2>
                     </div>

@@ -21,7 +21,8 @@
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- CSS only -->
-
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -35,7 +36,6 @@
 
 <body>
     <div id="app">
-        @if(Auth::check())
         <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -57,7 +57,6 @@
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
-
                         @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -79,7 +78,6 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('product') }}"><i
                                         class="bi bi-archive-fill"></i> Dashboard</a>
@@ -105,7 +103,6 @@
                 </div>
             </div>
         </nav>
-        @endif
         <main>
             @yield('content')
         </main>
@@ -115,11 +112,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
-
     </script>
-
     @include('sweetalert::alert')
-
 </body>
 
 </html>

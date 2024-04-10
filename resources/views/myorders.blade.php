@@ -27,7 +27,7 @@
                             </li>
 
                             <div class="d-flex justify-content-end mt-3 pb-3">
-                                <a href="" class="btn btn-danger mx-2">Complaint</a>
+                                <a href="{{url('complaint')}}" class="btn btn-danger mx-2">Complaint</a>
                             </div>
                         </form>
                     </ul>

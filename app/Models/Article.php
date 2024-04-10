@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'gambar',
         'judul',
@@ -15,5 +16,4 @@ class Article extends Model
         'author',
         'link',
     ];
-
 }

@@ -5,8 +5,8 @@
 <body>
     <div class="container">
         <div class="col-sm-12 mt-5 text-center pt-5">
-            <h2 class="fw-bold text-green">Konfirmasi Pembayaran</h2>
-            <div class="custom-separator my-3 mb-5 mx-auto bg-primary"></div>
+            <h2 class="fw-bold text-green">Komplen Pengguna</h2>
+            <div class="custom-separator mx-auto my-2 mb-4 bg-primary"></div>
         </div>
         @if($errors->any())
             <div class="alert alert-danger">
@@ -20,7 +20,7 @@
         @else
 
         @endif
-        <form action="{{ route('addconfirm') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('addcomplaint') }}" method="POST" enctype="multipart/form-data"
             class="w-75 d-block mx-auto">
             @csrf
             <div class="row">
@@ -30,16 +30,31 @@
                         <input type="number" name="id_pesanan" id="" class="form-control" placeholder="ID Pesanan">
                     </div>
                 </div>
+
                 <div class="col-xs-12 my-sm-2">
                     <div class="form-group">
-                        <p><strong>Nama pengirim</strong></p>
-                        <input type="text" name="nama_pengirim" id="" class="form-control" placeholder="Nama pengirim">
+                        <p><strong>Nama pemesan</strong></p>
+                        <input type="text" name="nama_pemesan" id="" class="form-control" placeholder="Nama pemesan">
                     </div>
                 </div>
 
                 <div class="col-xs-12 my-sm-2">
-                    <p><strong>Bukti pembayaran</strong></p>
+                    <div class="form-group">
+                        <p><strong>Keluhan</strong></p>
+                        <input type="text" name="keluhan" id="" class="form-control" placeholder="Keluhan">
+                    </div>
+                </div>
+
+                <div class="col-xs-12 my-sm-2">
+                    <p><strong>Bukti keluhan</strong></p>
                     <input type="file" name="foto" id="foto" class="form-control" accept="image/*" multiple>
+                </div>
+
+                <div class="col-xs-12 my-sm-2">
+                    <div class="form-group">
+                        <p><strong>Saran & kritik</strong></p>
+                        <input type="text" name="saran" id="" class="form-control" placeholder="Saran & kritik">
+                    </div>
                 </div>
 
                 <div class="col-xs-12 my-sm-4">

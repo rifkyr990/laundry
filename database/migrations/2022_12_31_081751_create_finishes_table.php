@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('berat')->nullable();
             $table->integer('jenis_id')->nullable();
             $table->integer('category_id')->nullable();
-            
+
             $table->integer('pembayaran_id')->nullable();
             $table->integer('status_id')->default('3');
             $table->unsignedBigInteger('owner_id');
