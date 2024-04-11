@@ -17,17 +17,16 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->date('tanggal');
-            $table->integer('berat');
+            $table->decimal('berat', 8, 2);
             $table->integer('total')->nullable();
-            $table->integer('jenis_id');
+            $table->string('telp')->nullable();
+            $table->json('jenis_id');
             $table->integer('category_id');
 
             $table->integer('pembayaran_id')->default('1');
             $table->integer('status_id')->default('1');
-            $table->unsignedBigInteger('owner_id');
+            $table->integer('owner_id');
             $table->timestamps();
-
-            $table->foreign('owner_id')->references('id')->on('owners');
         });
     }
 

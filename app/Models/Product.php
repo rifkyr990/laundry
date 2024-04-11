@@ -9,6 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
+    
     protected $fillable = [
         'jenis',
         'tanggal',
@@ -18,8 +19,14 @@ class Product extends Model
         'category_id',
         'status_id',
         'owner_id',
+        'customer_id',
+        'jenis_id' => 'array',
     ];
 
+    protected $casts = [
+        'jenis_id' => 'array',
+    ];
+    
     public function jenis()
     {
         return $this->belongsTo(Jenis::class);

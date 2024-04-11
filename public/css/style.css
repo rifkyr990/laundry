@@ -16,6 +16,12 @@ html {
     width: 550px;
 }
 
+.fixed-bottom-right {
+    position: fixed;
+    bottom: 20px; /* Jarak dari bawah */
+    right: 20px; /* Jarak dari kanan */
+}
+
 .rounded-lg {
     border-radius: 1rem !important;
 }

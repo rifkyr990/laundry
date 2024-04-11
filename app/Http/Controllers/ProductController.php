@@ -10,6 +10,7 @@ use App\Models\Owner;
 use App\Models\Pembayaran;
 use App\Models\Product;
 use App\Models\Status;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,6 @@ class ProductController extends Controller
         $finish = Finish::all();
         $complaint = Complaint::all();
         $pelanggan = Owner::all();
-
         $jenis = Jenis::with('products')->get();
         $pembayaran = Pembayaran::with('products')->get();
         $categories = Category::with('products')->get();
@@ -33,7 +33,7 @@ class ProductController extends Controller
         $owner = Owner::with('products')->get();
         $products = Product::with('jenis', 'category', 'status', 'owner')->get();
 
-        return view('product', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan', 'finish', 'complaint'));
+        return view('product.index', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan', 'finish', 'complaint'));
     }
 
     /**
@@ -43,7 +43,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('create');
+        $jenis = Jenis::with('products')->get();
+        $pembayaran = Pembayaran::with('products')->get();
+        $categories = Category::with('products')->get();
+        $statuses = Status::with('products')->get();
+        $owner = Owner::with('products')->get();
+
+        return view('product.create', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner'));
     }
 
     /**
@@ -63,36 +69,50 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function tambah(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'telp' => 'required',
-            'alamat' => 'required',
-            'jenis_id' => 'required',
-            'category_id' => 'required',
-            'berat' => 'required',
-        ]);
-
         $data = $request->all();
 
-        $owners = new Owner;
-        $owners->nama = $data['nama'];
-        $owners->telp = $data['telp'];
-        $owners->alamat = $data['alamat'];
-        $owners->save();
-
         $product = new Product;
-        $product->jenis_id = $data['jenis_id'];
-        $product->tanggal = $data['tanggal'];
-        $product->berat = $data['berat'];
+        $product->owner_id = $data['owner_id'];
         $product->category_id = $data['category_id'];
-        $product->owner_id = $owners->id;
+        $product->berat = $data['berat'];
+        // Mengonversi nilai string menjadi integer sebelum menyimpannya sebagai array
+        $jenis_id = array_map('intval', $request->jenis_id ?? []);
+        // Menggunakan json_encode untuk menyimpan array integer ke dalam kolom jenis_id
+        $product->jenis_id = json_encode($jenis_id);
+
+        // Menghitung total harga dari tambahan barang
+        $totalTambahan = 0;
+        foreach ($jenis_id as $jenis) {
+            $tambahan = Jenis::find($jenis);
+            if ($tambahan) {
+                $totalTambahan += $tambahan->harga;
+            }
+        }
+
+        // Menghitung total harga keseluruhan
+        $categoryPrice = $product->category->harga ?? 0;
+        $total = ($product->berat * $categoryPrice) + $totalTambahan;
+        $product->total = $total;
+        $product->tanggal = Date::now();
+        // Mengambil data pemilik berdasarkan owner_id yang dipilih
+        $owner = Owner::find($data['owner_id']);
+        if($owner) {
+            // Jika pemilik ditemukan, maka isi nomor telepon (telp) dari pemilik
+            $product->telp = $owner->telp;
+        } else {
+            // Handle jika pemilik tidak ditemukan
+            // Misalnya, mengatur default value untuk telp atau memberikan pesan kesalahan
+            $product->telp = ''; // Atau isi dengan nilai default
+        }
         $product->user_id = auth()->id();
         $product->save();
 
-        return redirect()->route('detail', $product->id)->with('success', 'Pesanan berhasil diinput!');
+        return redirect()->route('product')->with('success', 'Pesanan berhasil diinput!');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -101,7 +121,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('show', compact('product'));
+        return view('product.show', compact('product'));
     }
 
     /**
@@ -111,7 +131,7 @@ class ProductController extends Controller
      */
     public function detail(Product $product)
     {
-        return view('detail', compact('product'));
+        return view('product.detail', compact('product'));
     }
 
     /**
@@ -126,7 +146,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $status = Status::all();
 
-        return view('edit', compact('pembayaran', 'jenis', 'categories', 'status', 'product'));
+        return view('product.edit', compact('pembayaran', 'jenis', 'categories', 'status', 'product'));
     }
 
     /**
@@ -163,7 +183,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('create')->with('success', 'Orderan berhasil dihapus');
+        return redirect()->route('product.create')->with('success', 'Orderan berhasil dihapus');
     }
 
 

@@ -136,7 +136,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('create') }}"
+                        <a href="{{ route('product.create') }}"
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>
@@ -160,7 +160,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('create') }}"
+                        <a href="{{ route('product.create') }}"
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>
@@ -184,7 +184,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('create') }}"
+                        <a href="{{ route('product.create') }}"
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>

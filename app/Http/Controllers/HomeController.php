@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $articles = Article::all();
+        return view('home',compact('articles'));
     }
 
     public function article()

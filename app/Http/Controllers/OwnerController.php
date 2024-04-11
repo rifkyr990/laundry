@@ -19,7 +19,8 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return view('payment');
+        $owners = Owner::all();
+        return view('owner.index', compact('owners'));
     }
 
     /**
@@ -39,8 +40,11 @@ class OwnerController extends Controller
      */
     public function create()
     {
-        //
+        $owner = Owner::all();
+
+        return view('owner.create', compact('owner'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -161,6 +165,24 @@ class OwnerController extends Controller
         return redirect()->route('home')->with('success', 'Keluhan berhasil disampaikan!');
     }
 
+    public function store(Request $request) {
+        $request->validate([
+            'nama' => 'required',
+            'telp' => 'required',
+            'alamat' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $owners = new Owner;
+        $owners->nama = $data['nama'];
+        $owners->telp = $data['telp'];
+        $owners->alamat = $data['alamat'];
+        $owners->save();
+
+        return redirect()->route('owner')->with('success', 'Pelanggan berhasil ditambahkan');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -168,7 +190,7 @@ class OwnerController extends Controller
      */
     public function edit(Owner $owner)
     {
-        //
+        return view('owner.edit', compact('owner'));
     }
 
     /**
@@ -178,16 +200,27 @@ class OwnerController extends Controller
      */
     public function update(Request $request, Owner $owner)
     {
-        //
+        $input = $request->all();
+        $owner->update($input);
+
+        return redirect()->route('owner')->with('success', 'Pelanggan sudah di update');
+    }
+
+    public function show(Owner $owner)
+    {
+        return view('owner.show', compact('owner'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \App\Models\Owner  $owner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Owner $owner)
+    public function hapus(Owner $owner)
     {
-        //
+        $owner->delete();
+
+        return redirect()->route('owner');
     }
 }

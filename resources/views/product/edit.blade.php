@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-sm-12 mt-5 pt-5">
         <h2 class="text-center fw-bold">Update Order</h2>
-
+        <div class="custom-separator mx-auto my-2 bg-primary"></div>
         <form action="{{ route('update', $product->id) }}" method="post" enctype="multipart/form-data">
 
             @csrf
