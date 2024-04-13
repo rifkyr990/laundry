@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
+            $table->string('order_id');
             $table->date('tanggal');
             $table->decimal('berat', 8, 2);
             $table->integer('total')->nullable();

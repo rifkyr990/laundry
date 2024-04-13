@@ -29,7 +29,7 @@
                                 selain itu dibalik jadinya aplikasi terdapat pemeran lain diantaranya ada <strong>Akbar pratama suryamin</strong> sebagai designer apps
                                 serta <strong>Apridan husaen muharam</strong> sebagai data analyst system.
                             </p>
-                            <a href="{{ route('create') }}"
+                            <a href=""
                                 class="btn-order css-button-rounded--green btn-block p-2 px-3 shadow-sm text-decoration-none text-center position-absolute"
                                 data-aos="flip-down" data-aos-duration="1000" style="bottom: 210px;">Order Sekarang</a>
                         </h2>

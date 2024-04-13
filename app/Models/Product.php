@@ -19,6 +19,7 @@ class Product extends Model
         'category_id',
         'status_id',
         'owner_id',
+        'order_id',
         'customer_id',
         'jenis_id' => 'array',
     ];
@@ -29,7 +30,7 @@ class Product extends Model
     
     public function jenis()
     {
-        return $this->belongsTo(Jenis::class);
+        return $this->belongsTo(Jenis::class, 'jenis_id');
     }
 
     public function pembayaran()

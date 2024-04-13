@@ -15,7 +15,7 @@
         <strong>Status :</strong>
         <h4 class="fw-bold">{{$product->status->nama_status}}</h4>
         <strong>Total Harga :</strong>
-        <h4 class="fw-bold">Rp. {{number_format($product->berat * $product->category->harga + $product->jenis->harga, 2)}}</h4>
+        <h4 class="fw-bold">Rp. {{number_format($product->total)}}</h4>
         <div class="button">
             <a href="{{url('product')}}" class="btn btn-danger">Back</a>
         </div>

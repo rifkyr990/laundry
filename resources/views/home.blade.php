@@ -216,7 +216,7 @@
                         <div class="custom-separator my-4 mx-auto bg-primary"></div>
                         <div class="px-4 pb-4">
                             <div class="heading my-4">
-                                <h2 class="fw-bold fs-4"><a href="{{ $data->link }}"
+                                <h2 class="fw-bold fs-4"><a href="{{ route($data->link) }}"
                                         class="text-decoration-none">{{ $data->judul }}</a></h2>
                             </div>
                             <div class="body-text text-muted">

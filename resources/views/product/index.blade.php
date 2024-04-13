@@ -47,23 +47,28 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $data)
+                                @if ($data->status_id == '1')
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>{{ $data->id }}</td>
+                                    <th scope="row">{{ $data->id }}</th>
+                                    <td>{{ $data->order_id }}</td>
                                     <td>{{ $data->owner->nama }}</td>
                                     <td>{{number_format($data->total)}}
                                     </td>
                                     <td>
                                         @if ($data->status->id == 1)
-                                        <button class=" btn btn-warning btn-sm" disabled>{{ $data->status->nama_status }}</button>
+                                        <a href="{{ route('setStatus', $data->id) }}?status_id=2"
+                                            class="btn btn-warning btn-sm">Proses</i></a>
                                         @else
-                                        <button class=" btn btn-success btn-sm" disabled>{{ $data->status->nama_status }}</button>
+                                        <a href="{{ route('setStatus', $data->id) }}?status_id=1"
+                                            class="btn btn-success btn-sm">Selesai</a>
                                         @endif
                                     </td>
                                     <td>
                                         <form action="{{ route('destroy', $data->id) }}" method="post">
-                                            <a href="{{ route('product.show', $data->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                            <a href="{{ route('product.edit', $data->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                            <a href="{{ route('product.show', $data->id) }}"
+                                                class="btn btn-info btn-sm">Detail</a>
+                                            <a href="{{ route('product.edit', $data->id) }}"
+                                                class="btn btn-primary btn-sm">Edit</a>
 
                                             @csrf
                                             @method('DELETE')
@@ -73,8 +78,61 @@
                                         </form>
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
-                                <!-- Additional rows can be added dynamically using backend data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="container mt-5">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Order ID</th>
+                                    <th scope="col">Customer Name</th>
+                                    <th scope="col">Total Price</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($products as $data)
+                                @if ($data->status_id == '2')
+                                <tr>
+                                    <th scope="row">{{ $data->id }}</th>
+                                    <td>{{ $data->order_id }}</td>
+                                    <td>{{ $data->owner->nama }}</td>
+                                    <td>{{number_format($data->total)}}
+                                    </td>
+                                    <td>
+                                        @if ($data->status->id == 1)
+                                        <a href="{{ route('setStatus', $data->id) }}?status_id=2"
+                                            class="btn btn-warning btn-sm">Proses</i></a>
+                                        @else
+                                        <a href="{{ route('setStatus', $data->id) }}?status_id=1"
+                                            class="btn btn-success btn-sm">Selesai</a>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('destroy', $data->id) }}" method="post">
+                                            <a href="{{ route('product.show', $data->id) }}"
+                                                class="btn btn-info btn-sm">Detail</a>
+                                            <a href="{{ route('product.edit', $data->id) }}"
+                                                class="btn btn-primary btn-sm">Edit</a>
+
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="button" class="btn btn-danger btn-sm"
+                                                onclick="confirmDelete()">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

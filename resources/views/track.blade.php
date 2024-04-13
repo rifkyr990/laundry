@@ -11,7 +11,6 @@
         </div>
     </form>
 
-    @if(isset($product))
     @if($product)
     <div class="container mt-4">
         <div class="row">
@@ -31,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <strong>Jenis laundry :</strong>
-                        <p>{{ $product->jenis->nama_jenis }}</p>
+                        <p>{{ $product->jenis_id }}</p>
                     </div>
                     <div class="col-md-6">
                         <strong>Layanan :</strong>
@@ -47,7 +46,7 @@
                     <div class="col-md-6">
                         <strong>Total Harga :</strong>
                         <p>Rp.
-                            {{ number_format($product->berat * $product->category->harga + $product->jenis->harga, 2) }}
+                            {{number_format($product->total)}}
                         </p>
                     </div>
                 </div>
@@ -55,13 +54,10 @@
             </div>
         </div>
     </div>
-
-</div>
-@else
-<div class="mt-4 d-block mx-auto">
-    <p>Pesanan tidak ditemukan.</p>
-</div>
-@endif
-@endif
+    @else
+    <div class="mt-4 text-center">
+        <p>Pesanan tidak ditemukan.</p>
+    </div>
+    @endif
 </div>
 @endsection

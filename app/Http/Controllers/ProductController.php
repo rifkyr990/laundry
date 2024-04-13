@@ -53,18 +53,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function myOrder(Product $product)
-    {
-        $products = Product::where('user_id', Auth::id())->get();
-
-        return view('myorder', compact('products'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @return \Illuminate\Http\Response
@@ -73,7 +61,9 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
+        $idOrder = 'ORD-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -6));
         $product = new Product;
+        $product->order_id = $idOrder;
         $product->owner_id = $data['owner_id'];
         $product->category_id = $data['category_id'];
         $product->berat = $data['berat'];
@@ -119,9 +109,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        return view('product.show', compact('product'));
+        $jenis = Jenis::All();
+        $product = Product::findOrFail($id);
+        $product->jenis_id = json_decode($product->jenis_id, true); // Mendekode data JSON menjadi array PHP
+        return view('product.show', compact('product', 'jenis'));
     }
 
     /**
@@ -195,12 +188,24 @@ class ProductController extends Controller
     public function processOrder(Request $request)
     {
         $orderId = $request->input('order_id');
-        $product = Product::find($orderId);
+        $product = Product::where('order_id', $orderId)->first();
 
         if ($product) {
             return view('track', ['product' => $product]);
         } else {
             return view('track', ['product' => null]);
         }
+
+    }
+
+    public function updateStatus(Request $request, $id) {
+        $request->validate([
+            'status_id' => 'required|in:1,2',
+        ]);
+        $item = Product::find($id);
+        $item->status_id = $request->status_id;
+        $item->save();
+
+        return redirect()->back()->with('success', 'berhasil dirubah');
     }
 }

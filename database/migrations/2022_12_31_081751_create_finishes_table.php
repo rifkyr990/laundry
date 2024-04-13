@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->date('tanggal')->nullable();
             $table->integer('berat')->nullable();
-            $table->integer('jenis_id')->nullable();
+            $table->json('jenis_id')->nullable();
             $table->integer('category_id')->nullable();
 
             $table->integer('pembayaran_id')->nullable();

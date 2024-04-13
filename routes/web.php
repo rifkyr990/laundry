@@ -24,7 +24,6 @@ Route::get('/article/article2', [App\Http\Controllers\HomeController::class, 're
 Route::get('/article/article3', [App\Http\Controllers\HomeController::class, 'read3'])->name('read3');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'article'])->name('article');
 
-Route::get('/myorder', [App\Http\Controllers\ProductController::class, 'myOrder'])->name('myorder');
 Route::get('/track', [ProductController::class, 'trackOrder'])->name('track.order');
 Route::post('/track', [ProductController::class, 'processOrder'])->name('track.order.process');
 
@@ -37,6 +36,7 @@ Route::get('edit/{product}', [App\Http\Controllers\ProductController::class, 'ed
 Route::put('edit/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 Route::delete('detail/{product}', [App\Http\Controllers\ProductController::class, 'cancel'])->name('cancel');
 Route::delete('/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');
+Route::get('setstatus/{id}', [App\Http\Controllers\ProductController::class, 'updateStatus'])->name('setStatus');
 
 Route::get('/owner/', [App\Http\Controllers\OwnerController::class, 'index'])->name('owner');
 Route::post('/store', [App\Http\Controllers\OwnerController::class, 'store'])->name('owner.store');
@@ -47,14 +47,5 @@ Route::get('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 
 Route::put('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'update'])->name('update');
 Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'hapus'])->name('hapus');
 
-Route::get('/payment', [App\Http\Controllers\OwnerController::class, 'index'])->name('payment');
-
-Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])->name('confirm');
-Route::post('/addconfirm', [App\Http\Controllers\OwnerController::class, 'addconfirm'])->name('addconfirm');
-
 Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');
 Route::post('/addcomplaint', [App\Http\Controllers\OwnerController::class, 'addcomplaint'])->name('addcomplaint');
-
-Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('category.create');
-Route::post('/finishorder/{product}', [App\Http\Controllers\OwnerController::class, 'finishorder'])->name('finishorder');
-Route::get('/myorders', [App\Http\Controllers\OwnerController::class, 'finish'])->name('myorders');

@@ -28,16 +28,6 @@ class OwnerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function admin()
-    {
-        return view('admin');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $owner = Owner::all();
@@ -73,29 +63,6 @@ class OwnerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Owner  $owner
-     * @return \Illuminate\Http\Response
-     */
-    public function finish(Finish $finish)
-    {
-        $finishes = Finish::where('user_id', Auth::id())->get();
-
-        return view('myorders', compact('finishes'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function confirm()
-    {
-        return view('confirm');
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -103,35 +70,6 @@ class OwnerController extends Controller
     public function complaint()
     {
         return view('complaint');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function addconfirm(Request $request)
-    {
-        $request->validate([
-            'foto' => 'required|file|mimes:png,jpg,svg|max:2048',
-        ]);
-
-        $gambar = $request->file('foto');
-        $destinationPath = 'konfir/';
-        $gambarImage = date('YmdHis').'.'.$gambar->getClientOriginalExtension();
-        $gambar->move($destinationPath, $gambarImage);
-        $input['foto'] = "$gambarImage";
-
-        $data = $request->all();
-
-        $confirms = new Confirm;
-        $confirms->id_pesanan = $data['id_pesanan'];
-        $confirms->nama_pengirim = $data['nama_pengirim'];
-        $confirms->foto = $gambarImage;
-
-        $confirms->save();
-
-        return redirect()->route('home')->with('success', 'Konfirmasi berhasil ditambahkan!');
     }
 
     /**
