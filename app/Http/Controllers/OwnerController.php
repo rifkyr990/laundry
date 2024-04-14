@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complaint;
-use App\Models\Confirm;
 use App\Models\Finish;
 use App\Models\Owner;
 use App\Models\Product;
@@ -35,32 +34,6 @@ class OwnerController extends Controller
         return view('owner.create', compact('owner'));
     }
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function finishorder($id)
-    {
-        $product = Product::find($id);
-
-        $finish = new Finish;
-
-        $finish->owner_id = $product->owner_id;
-        $finish->tanggal = $product->tanggal;
-        $finish->berat = $product->berat;
-        $finish->category_id = $product->category_id;
-        $finish->jenis_id = $product->jenis_id;
-        $finish->pembayaran_id = $product->pembayaran_id;
-        $finish->user_id = $product->user_id;
-        $finish->save();
-
-        $product->delete();
-
-        return redirect()->back()->with('success', 'berhasil');
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -111,8 +84,9 @@ class OwnerController extends Controller
         ]);
 
         $data = $request->all();
-
+        $idOwners = 'CUST' . date('Ymd') . strtoupper(substr(uniqid(), -6));
         $owners = new Owner;
+        $owners->id_owners = $idOwners;
         $owners->nama = $data['nama'];
         $owners->telp = $data['telp'];
         $owners->alamat = $data['alamat'];

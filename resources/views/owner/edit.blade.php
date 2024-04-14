@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <div class="col-sm-12">
+    <div class="col-sm-12 mt-5 pt-5">
         <h2 class="text-center fw-bold">Update Data Pelanggan</h2>
 
-        <form action="{{ route('update', $owner->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('owner.update', $owner->id) }}" method="post" enctype="multipart/form-data">
 
             @csrf
             @method('PUT')

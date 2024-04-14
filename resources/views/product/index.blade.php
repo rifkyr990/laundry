@@ -65,6 +65,8 @@
                                     </td>
                                     <td>
                                         <form action="{{ route('destroy', $data->id) }}" method="post">
+                                            <a href="{{ route('kirimnota', $data->id) }}"
+                                                class="btn btn-success btn-sm">Kirim</a>
                                             <a href="{{ route('product.show', $data->id) }}"
                                                 class="btn btn-info btn-sm">Detail</a>
                                             <a href="{{ route('product.edit', $data->id) }}"
@@ -73,8 +75,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="button" class="btn btn-danger btn-sm"
-                                                onclick="confirmDelete()">Hapus</button>
+                                            <button type="submit" class="form btn btn-danger btn-sm">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -126,8 +127,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="button" class="btn btn-danger btn-sm"
-                                                onclick="confirmDelete()">Hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

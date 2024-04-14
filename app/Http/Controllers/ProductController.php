@@ -23,8 +23,6 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $finish = Finish::all();
-        $complaint = Complaint::all();
         $pelanggan = Owner::all();
         $jenis = Jenis::with('products')->get();
         $pembayaran = Pembayaran::with('products')->get();
@@ -33,7 +31,7 @@ class ProductController extends Controller
         $owner = Owner::with('products')->get();
         $products = Product::with('jenis', 'category', 'status', 'owner')->get();
 
-        return view('product.index', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan', 'finish', 'complaint'));
+        return view('product.index', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan'));
     }
 
     /**
@@ -208,4 +206,22 @@ class ProductController extends Controller
 
         return redirect()->back()->with('success', 'berhasil dirubah');
     }
+
+    public function kirimnota($id) {
+        $product = Product::find($id);
+    
+        $pesan = "Detail Pesanan:\n\n" .
+            "ID Pesanan: " . $product->order_id . "\n" .
+            "Nama: " . $product->owner->nama . "\n" .
+            "Jenis Layanan: " . $product->category->nama_layanan . "\n" .
+            "Status Pesanan: " . $product->status->nama_status . "\n" .
+            "Status Pembayaran: " . $product->pembayaran->nama_pembayaran . "\n" .
+            "Total Harga: Rp" . number_format($product->total) . "\n\n" .
+            "Untuk memeriksa status pesanan lebih lanjut, mohon kunjungi situs kami di www.laundrygo.com/track";
+    
+        $url = "https://wa.me/".$product->telp."?text=".urlencode($pesan);
+    
+        return view('redirect_whatsapp', ['wa_url' => $url]);
+    }
+    
 }

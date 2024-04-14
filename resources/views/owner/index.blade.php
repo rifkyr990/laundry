@@ -45,10 +45,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($owners as $data)
+                                @foreach ($owners as $index => $data)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>{{ $data->id }}</td>
+                                    <th scope="row">{{ $index + 1 }}</th>
+                                    <td>{{ $data->id_owners }}</td>
                                     <td>{{ $data->nama }}</td>
                                     <td>{{ $data->telp }}</td>
                                     <td>{{ $data->alamat }}</td>

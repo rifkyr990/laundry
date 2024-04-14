@@ -18,9 +18,4 @@ class Pembayaran extends Model
     {
         return $this->hasMany(Product::class, 'pembayaran_id', 'id');
     }
-
-    public function finishes()
-    {
-        return $this->hasMany(Finish::class, 'pembayaran_id', 'id');
-    }
 }

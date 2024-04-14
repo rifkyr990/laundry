@@ -18,9 +18,4 @@ class Status extends Model
     {
         return $this->hasMany(Product::class, 'status_id', 'id');
     }
-
-    public function finish()
-    {
-        return $this->hasMany(Finish::class, 'status_id', 'id');
-    }
 }

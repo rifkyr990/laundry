@@ -19,9 +19,4 @@ class Jenis extends Model
     {
         return $this->hasMany(Product::class, 'jenis_id', 'id');
     }
-
-    public function finishes()
-    {
-        return $this->hasMany(Finish::class, 'jenis_id', 'id');
-    }
 }

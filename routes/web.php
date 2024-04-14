@@ -30,21 +30,23 @@ Route::post('/track', [ProductController::class, 'processOrder'])->name('track.o
 Route::get('/product/', [App\Http\Controllers\ProductController::class, 'index'])->name('product');
 Route::post('/tambah', [App\Http\Controllers\ProductController::class, 'tambah'])->name('tambah');
 Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
-Route::get('show/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-Route::get('detail/{product}', [App\Http\Controllers\ProductController::class, 'detail'])->name('product.detail');
-Route::get('edit/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
-Route::put('edit/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
-Route::delete('detail/{product}', [App\Http\Controllers\ProductController::class, 'cancel'])->name('cancel');
+Route::get('/product/show/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+Route::get('/product/edit/{product}', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
+Route::put('/product/edit/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 Route::delete('/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');
 Route::get('setstatus/{id}', [App\Http\Controllers\ProductController::class, 'updateStatus'])->name('setStatus');
+Route::get('kirimnota/{id}', [App\Http\Controllers\ProductController::class, 'kirimnota'])->name('kirimnota');
 
+Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])->name('confirm');
+Route::get('/myorder', [App\Http\Controllers\ProductController::class, 'myOrder'])->name('myorder');
+Route::get('/myorders', [App\Http\Controllers\OwnerController::class, 'finish'])->name('myorders');
 Route::get('/owner/', [App\Http\Controllers\OwnerController::class, 'index'])->name('owner');
 Route::post('/store', [App\Http\Controllers\OwnerController::class, 'store'])->name('owner.store');
 Route::get('/owner/create', [App\Http\Controllers\OwnerController::class, 'create'])->name('owner.create');
 Route::get('/owner/show/{owner}', [App\Http\Controllers\OwnerController::class, 'show'])->name('owner.show');
 Route::get('/owner/detail/{owner}', [App\Http\Controllers\OwnerController::class, 'detail'])->name('owner.detail');
 Route::get('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'edit'])->name('owner.edit');
-Route::put('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'update'])->name('update');
+Route::put('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'update'])->name('owner.update');
 Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'hapus'])->name('hapus');
 
 Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');

@@ -20,9 +20,4 @@ class Owner extends Model
     {
         return $this->hasMany(Product::class, 'owner_id');
     }
-
-    public function finishes()
-    {
-        return $this->hasMany(Finish::class, 'owner_id', 'id');
-    }
 }
