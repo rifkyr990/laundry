@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,5 @@ Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'h
 
 Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');
 Route::post('/addcomplaint', [App\Http\Controllers\OwnerController::class, 'addcomplaint'])->name('addcomplaint');
+Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+Route::get('/report', [App\Http\Controllers\DashboardController::class, 'filterProducts'])->name('report');

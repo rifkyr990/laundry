@@ -36,7 +36,7 @@
                     <h4 class="fw-bold">Rp. {{number_format($product->total)}}</h4>
                 </div>
                 <div class="mt-4">
-                    <a href="{{url('product')}}" class="btn btn-danger">Back</a>
+                    <a href="{{url()->previous()}}" class="btn btn-danger">Back</a>
                 </div>
             </div>
         </div>

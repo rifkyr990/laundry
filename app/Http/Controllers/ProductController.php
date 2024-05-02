@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Complaint;
 use App\Models\Finish;
+use Illuminate\Support\Carbon;
 use App\Models\Jenis;
 use App\Models\Owner;
 use App\Models\Pembayaran;
@@ -21,18 +22,29 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $pelanggan = Owner::all();
-        $jenis = Jenis::with('products')->get();
-        $pembayaran = Pembayaran::with('products')->get();
-        $categories = Category::with('products')->get();
-        $statuses = Status::with('products')->get();
-        $owner = Owner::with('products')->get();
-        $products = Product::with('jenis', 'category', 'status', 'owner')->get();
+    public function index(Request $request)
+{
+    $statuses = Status::with('products')->get(); // Memuat status dan produk terkait
+    $todayDate = Carbon::now()->format('Y-m-d'); // Mendapatkan tanggal hari ini
 
-        return view('product.index', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner', 'products', 'pelanggan'));
-    }
+    // Mendefinisikan query untuk produk dengan conditional filtering
+    $products = Product::query()
+        ->when($request->filled('date'), function ($query) use ($request) {
+            // Jika ada tanggal yang diberikan dalam request, filter berdasarkan tanggal itu
+            return $query->whereDate('created_at', $request->date);
+        }, function ($query) use ($todayDate) {
+            // Jika tidak ada tanggal yang diberikan, gunakan tanggal hari ini
+            return $query->whereDate('created_at', $todayDate);
+        })
+        ->when($request->filled('status_id'), function ($query) use ($request) {
+            // Filter produk berdasarkan status_id jika status_id disediakan dalam request
+            return $query->where('status_id', $request->status_id);
+        })
+        ->paginate(10); // Paginate hasilnya untuk menampilkan 10 produk per halaman
+
+    // Kembalikan ke view dengan data produk dan status yang tersedia
+    return view('product.index', compact('products', 'statuses'));
+}
 
     /**
      * Show the form for creating a new resource.
@@ -59,7 +71,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $idOrder = 'ORD-' . date('Ymd') . '-' . strtoupper(substr(uniqid(), -6));
+        $idOrder = 'ORD'. strtoupper(substr(uniqid(), -6));
         $product = new Product;
         $product->order_id = $idOrder;
         $product->owner_id = $data['owner_id'];

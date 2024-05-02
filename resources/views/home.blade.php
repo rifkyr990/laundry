@@ -19,7 +19,7 @@
             <div class="row justify-content-between">
                 <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
                     <div data-aos="zoom-out">
-                        <h1>Let's laundry here Now <span>LaundryGo</span></h1>
+                        <h1>Let's laundry here Now <br><span>Amanah Laundry</span></h1>
                         <h2>Budayakan malas mencuci,karena mencuci merupakan tugas utama kami</h2>
                         <div class="text-center text-lg-start">
                             <a href="#service" class="btn-get-started scrollto text-decoration-none">Order Now</a>
@@ -136,7 +136,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('product.create') }}"
+                        <a href=""
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>
@@ -160,7 +160,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('product.create') }}"
+                        <a href=""
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>
@@ -184,7 +184,7 @@
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
                         </ul>
-                        <a href="{{ route('product.create') }}"
+                        <a href=""
                             class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
                             Sekarang</a>
                     </div>

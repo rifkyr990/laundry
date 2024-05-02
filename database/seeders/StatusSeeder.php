@@ -17,5 +17,6 @@ class StatusSeeder extends Seeder
     {
         Status::create(['nama_status' => "Proses"]);
         Status::create(['nama_status' => "Selesai"]);
+        Status::create(['nama_status' => "Diambil"]);
     }
 }

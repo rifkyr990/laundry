@@ -84,7 +84,7 @@ class OwnerController extends Controller
         ]);
 
         $data = $request->all();
-        $idOwners = 'CUST' . date('Ymd') . strtoupper(substr(uniqid(), -6));
+        $idOwners = 'CUST'. strtoupper(substr(uniqid(), -6));
         $owners = new Owner;
         $owners->id_owners = $idOwners;
         $owners->nama = $data['nama'];

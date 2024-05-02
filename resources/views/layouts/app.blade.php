@@ -23,8 +23,8 @@
     <!-- Bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- CSS only -->
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metismenu/dist/metisMenu.min.css">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -56,13 +56,18 @@
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
+                                href="{{ route('home') }}">Home</a></li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#service">Services</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#article">Article</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#location">Location</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
+                                href="{{ route('about') }}">About</a></li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
@@ -82,14 +87,14 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('product') }}"><i
+                                <a class="dropdown-item" href="{{ route('dashboard') }}"><i
                                         class="bi bi-archive-fill"></i> Dashboard</a>
-                                <a class="dropdown-item" href="{{ route('confirm') }}"><i
-                                        class="bi bi-credit-card-fill"></i> Konfirmasi Pembayaran</a>
-                                <a class="dropdown-item" href="{{ route('myorders') }}"><i
-                                        class="bi bi-bag-check-fill"></i> Pesanan Selesai</a>
-                                <a class="dropdown-item" href="{{ route('myorder') }}"><i
-                                        class="bi bi-basket3-fill"></i> Pesanan Saya</a>
+                                <a class="dropdown-item" href="{{ route('product') }}"><i
+                                        class="bi bi-credit-card-fill"></i> Orders</a>
+                                <a class="dropdown-item" href="{{ route('owner') }}"><i
+                                        class="bi bi-bag-check-fill"></i> Customers</a>
+                                <a class="dropdown-item" href="{{ route('report') }}"><i
+                                        class="bi bi-basket3-fill"></i> Reports</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();"><i
                                         class="bi bi-box-arrow-right"></i>
@@ -127,6 +132,7 @@
     <script>
         AOS.init();
     </script>
+    @yield('js')
     @include('sweetalert::alert')
 </body>
 

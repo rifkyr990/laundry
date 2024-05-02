@@ -9,7 +9,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="{{ route('dashboard') }}">
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -20,10 +20,7 @@
                             <a class="nav-link bg-primary text-light" href="{{ route('owner') }}">Customers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Reports</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Integrations</a>
+                            <a class="nav-link" href="{{ route('report') }}">Reports</a>
                         </li>
                     </ul>
                 </div>
