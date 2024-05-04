@@ -118,17 +118,18 @@
 
             <div class="row">
                 <!-- Pricing Table-->
+                @foreach ($layanan as $data)
                 <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-right" data-aos-duration="1000">
                     <div class="bg-white p-5 rounded-lg shadow">
-                        <h1 class="h6 text-uppercase font-weight-bold mb-4">Reguler</h1>
-                        <h2 class="h1 font-weight-bold">Rp 4.500<span class="text-small font-weight-normal ml-2">/
+                        <h1 class="h6 text-uppercase font-weight-bold mb-4">{{$data->nama_layanan}}</h1>
+                        <h2 class="h1 font-weight-bold">Rp {{$data->harga}}<span class="text-small font-weight-normal ml-2">/
                                 services</span></h2>
 
                         <div class="custom-separator my-4 mx-auto bg-primary"></div>
 
                         <ul class="list-unstyled my-5 text-small text-left">
                             <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Estimasi 2-3 hari</li>
+                                <i class="fa fa-check mr-2 text-primary"></i> Estimasi {{$data->estimasi}}</li>
                             <li class="mb-3">
                                 <i class="fa fa-check mr-2 text-primary"></i> Bebas memilih parfum</li>
                             <li class="mb-3">
@@ -141,54 +142,7 @@
                             Sekarang</a>
                     </div>
                 </div>
-
-                <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="flip-up" data-aos-duration="1000">
-                    <div class="bg-white p-5 rounded-lg shadow">
-                        <h1 class="h6 text-uppercase font-weight-bold mb-4">Expres</h1>
-                        <h2 class="h1 font-weight-bold">Rp 6.500<span class="text-small font-weight-normal ml-2">/
-                                services</span></h2>
-
-                        <div class="custom-separator my-4 mx-auto bg-primary"></div>
-
-                        <ul class="list-unstyled my-5 text-small text-left">
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Estimasi 3 jam</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Bebas memilih parfum</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Bisa delivery dan pickup</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
-                        </ul>
-                        <a href=""
-                            class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
-                            Sekarang</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-left" data-aos-duration="1000">
-                    <div class="bg-white p-5 rounded-lg shadow">
-                        <h1 class="h6 text-uppercase font-weight-bold mb-4">One day service</h1>
-                        <h2 class="h1 font-weight-bold">Rp 5.500<span class="text-small font-weight-normal ml-2">/
-                                services</span></h2>
-
-                        <div class="custom-separator my-4 mx-auto bg-primary"></div>
-
-                        <ul class="list-unstyled my-5 text-small text-left">
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Estimasi 1 hari</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Bebas memilih parfum</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Bisa delivery dan pickup</li>
-                            <li class="mb-3">
-                                <i class="fa fa-check mr-2 text-primary"></i> Mendapat 1 kupon</li>
-                        </ul>
-                        <a href=""
-                            class="css-button-rounded--green btn-block p-2 shadow-sm w-75 text-decoration-none rounded-pill">Order
-                            Sekarang</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

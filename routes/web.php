@@ -50,6 +50,13 @@ Route::get('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 
 Route::put('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'update'])->name('owner.update');
 Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'hapus'])->name('hapus');
 
+Route::get('/layanan/', [App\Http\Controllers\CategoryController::class, 'index'])->name('layanan');
+Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('layanan.store');
+Route::get('/layanan/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('layanan.create');
+Route::get('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('layanan.edit');
+Route::put('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('layanan.update');
+Route::delete('/{layanan}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('layanan.destroy');
+
 Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');
 Route::post('/addcomplaint', [App\Http\Controllers\OwnerController::class, 'addcomplaint'])->name('addcomplaint');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
