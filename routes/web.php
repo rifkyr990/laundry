@@ -18,12 +18,11 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 Route::get('/article/article1', [App\Http\Controllers\HomeController::class, 'read'])->name('read');
 Route::get('/article/article2', [App\Http\Controllers\HomeController::class, 'read2'])->name('read2');
 Route::get('/article/article3', [App\Http\Controllers\HomeController::class, 'read3'])->name('read3');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'article'])->name('article');
 
 Route::get('/track', [ProductController::class, 'trackOrder'])->name('track.order');
 Route::post('/track', [ProductController::class, 'processOrder'])->name('track.order.process');
@@ -36,6 +35,7 @@ Route::get('/product/edit/{product}', [App\Http\Controllers\ProductController::c
 Route::put('/product/edit/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 Route::delete('/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('destroy');
 Route::get('setstatus/{id}', [App\Http\Controllers\ProductController::class, 'updateStatus'])->name('setStatus');
+Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 Route::get('kirimnota/{id}', [App\Http\Controllers\ProductController::class, 'kirimnota'])->name('kirimnota');
 
 Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])->name('confirm');
@@ -55,7 +55,7 @@ Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])
 Route::get('/layanan/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('layanan.create');
 Route::get('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('layanan.edit');
 Route::put('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('layanan.update');
-Route::delete('/{layanan}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('layanan.destroy');
+Route::delete('/layanan/{layanan}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('layanan.destroy');
 
 Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');
 Route::post('/addcomplaint', [App\Http\Controllers\OwnerController::class, 'addcomplaint'])->name('addcomplaint');

@@ -17,8 +17,12 @@
                         <a class="nav-link" href="{{ route('owner') }}">Customers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link bg-primary text-light" href="{{ route('report') }}">Reports</a>
+                        <a class="nav-link bg-primary text-light" href="{{ route('layanan') }}">Service</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('report') }}">Reports</a>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -74,6 +78,7 @@
                                         @method('DELETE')
 
                                         <button type="submit" class="form btn btn-danger btn-sm">Hapus</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

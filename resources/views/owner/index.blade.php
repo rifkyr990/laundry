@@ -20,6 +20,9 @@
                             <a class="nav-link bg-primary text-light" href="{{ route('owner') }}">Customers</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('layanan') }}">Service</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('report') }}">Reports</a>
                         </li>
                     </ul>

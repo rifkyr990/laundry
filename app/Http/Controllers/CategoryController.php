@@ -95,10 +95,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(Category $layanan)
     {
-        $category->delete();
+        $layanan->delete();
 
-        return redirect()->route('owner');
+        return redirect()->route('layanan')->with('success', 'Orderan berhasil dihapus');
     }
 }

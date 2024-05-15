@@ -9,7 +9,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link bg-primary text-light" href="#">
+                            <a class="nav-link active bg-primary text-light" href="{{ route('dashboard') }}">
                                 Dashboard <span class="sr-only">(current)</span>
                             </a>
                         </li>
@@ -20,8 +20,12 @@
                             <a class="nav-link" href="{{ route('owner') }}">Customers</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('layanan') }}">Service</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('report') }}">Reports</a>
                         </li>
+
                     </ul>
                 </div>
             </nav>
@@ -46,7 +50,8 @@
                                     <h6 class="m-b-20">Pesanan Masuk</h6>
                                     <h2 class="text-right"><i
                                             class="fa fa-rocket f-left"></i><span>{{$unfinishedOrderCount}}</span></h2>
-                                    <p class="m-b-0">Completed Orders<span class="f-right">{{$finishedOrderCount}}</span></p>
+                                    <p class="m-b-0">Completed Orders<span
+                                            class="f-right">{{$finishedOrderCount}}</span></p>
                                 </div>
                             </div>
                         </div>

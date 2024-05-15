@@ -25,16 +25,13 @@ class ProductController extends Controller
     public function index(Request $request)
 {
     $statuses = Status::with('products')->get(); // Memuat status dan produk terkait
-    $todayDate = Carbon::now()->format('Y-m-d'); // Mendapatkan tanggal hari ini
+    $todayDate = Carbon::now()->format('Y-m-d');
+    $owners = Owner::with('products')->get();
 
-    // Mendefinisikan query untuk produk dengan conditional filtering
     $products = Product::query()
         ->when($request->filled('date'), function ($query) use ($request) {
             // Jika ada tanggal yang diberikan dalam request, filter berdasarkan tanggal itu
             return $query->whereDate('created_at', $request->date);
-        }, function ($query) use ($todayDate) {
-            // Jika tidak ada tanggal yang diberikan, gunakan tanggal hari ini
-            return $query->whereDate('created_at', $todayDate);
         })
         ->when($request->filled('status_id'), function ($query) use ($request) {
             // Filter produk berdasarkan status_id jika status_id disediakan dalam request
@@ -43,7 +40,7 @@ class ProductController extends Controller
         ->paginate(10); // Paginate hasilnya untuk menampilkan 10 produk per halaman
 
     // Kembalikan ke view dengan data produk dan status yang tersedia
-    return view('product.index', compact('products', 'statuses'));
+    return view('product.index', compact('products', 'statuses', 'owners'));
 }
 
     /**
@@ -210,7 +207,7 @@ class ProductController extends Controller
 
     public function updateStatus(Request $request, $id) {
         $request->validate([
-            'status_id' => 'required|in:1,2',
+            'status_id' => 'required|in:1,2,3',
         ]);
         $item = Product::find($id);
         $item->status_id = $request->status_id;
@@ -235,5 +232,14 @@ class ProductController extends Controller
     
         return view('redirect_whatsapp', ['wa_url' => $url]);
     }
-    
+
+    public function search(Request $request)
+    {
+        $statuses = Status::all();
+        $orderID = $request->order_id;
+        $products = Product::where('order_id', $orderID)->paginate(10);
+
+        return view('product.index', compact('products', 'statuses'));
+    }
+
 }

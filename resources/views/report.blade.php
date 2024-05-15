@@ -18,8 +18,12 @@
                         <a class="nav-link" href="{{ route('owner') }}">Customers</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('layanan') }}">Service</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link bg-primary text-light" href="{{ route('report') }}">Reports</a>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -69,23 +73,19 @@
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
+                            @if ($product->status->id == 3)
                             <tr>
                                 <td>{{ $product->order_id }}</td>
-                                <td>{{ $product->owner->nama }}</td>
+                                <td>{{ $product->owner?->nama }}</td>
                                 <td>
-                                    @if ($product->status->id == 1)
-                                    <a href="{{ route('setStatus', $data->id) }}?status_id=2"
-                                        class="btn btn-warning btn-sm">Proses</i></a>
-                                    @else
-                                    <a href="{{ route('setStatus', $data->id) }}?status_id=1"
-                                        class="btn btn-success btn-sm">Selesai</a>
-                                    @endif
+                                    <a href="" class="btn btn-success btn-sm">{{ $product->status->nama_status }}</a>
                                 </td>
                                 <td>{{ $product->created_at->format('Y-m-d') }}</td>
                                 <td>
                                     <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Lihat</a>
                                 </td>
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

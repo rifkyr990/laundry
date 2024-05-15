@@ -29,11 +29,9 @@ class DashboardController extends Controller
     {
         // Load statuses for the dropdown
         $statuses = Status::with('products')->get();
+        $owners = Owner::with('products')->get();
 
-        // Build the query
         $query = Product::query()->with('owner', 'status');
-
-        // Apply date filters if provided
         if ($request->filled('start_date')) {
             $query->whereDate('created_at', '>=', $request->start_date);
         }
@@ -41,15 +39,11 @@ class DashboardController extends Controller
         if ($request->filled('end_date')) {
             $query->whereDate('created_at', '<=', $request->end_date);
         }
-
-        // Apply status filter if provided
         if ($request->filled('status_id')) {
             $query->where('status_id', $request->status_id);
         }
-
-        // Get the results and paginate
         $products = $query->paginate(10);
 
-        return view('report', compact('products', 'statuses'));
+        return view('report', compact('products', 'statuses', 'owners'));
     }
 }

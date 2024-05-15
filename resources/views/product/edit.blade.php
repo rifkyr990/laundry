@@ -77,11 +77,15 @@
                     <label for="status_id"><strong>Status pesanan</strong></label>
                     <select class="form-control" name="status_id" id="status_id">
                         @foreach ($status as $statuses)
-                        <option value="{{$statuses->id}}" onkeyup="sum();">{{ $statuses->nama_status }}</option>
+                        <option value="{{$product->status->id}}">Pilih Status</option>
+                        <option value="{{ $statuses->id }}" {{ $statuses->id == $data->status_id ? 'selected' : '' }}>
+                            {{ $statuses->nama_status }}
+                        </option>
                         @endforeach
                     </select>
                 </div>
             </div>
+
 
             <div class="col-sm-12 mt-5">
                 <div class="form-group">
