@@ -8,6 +8,8 @@ use App\Models\Owner;
 use App\Models\Product;
 use Illuminate\Support\Carbon;
 use App\Models\Status;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ProductsExport;
 
 
 class DashboardController extends Controller
@@ -42,6 +44,15 @@ class DashboardController extends Controller
         if ($request->filled('status_id')) {
             $query->where('status_id', $request->status_id);
         }
+
+        if ($request->has('export') && $request->export == 'excel') {
+            $products = $query->get();
+            $startDate = Carbon::parse($request->input('start_date'))->startOfDay();
+            $endDate = Carbon::parse($request->input('end_date'))->endOfDay();
+
+            return Excel::download(new ProductsExport($products, $startDate, $endDate), 'products.xlsx');
+        }
+
         $products = $query->paginate(10);
 
         return view('report', compact('products', 'statuses', 'owners'));

@@ -23,7 +23,6 @@
                     <li class="nav-item">
                         <a class="nav-link bg-primary text-light" href="{{ route('report') }}">Reports</a>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -55,6 +54,7 @@
                         <div class="col-md-3">
                             <br />
                             <button class="btn btn-primary" type="submit">Filter</button>
+                            <button type="submit" name="export" value="excel" class="btn btn-success">Download Excel</button>
                         </div>
                     </div>
                 </form>
@@ -73,7 +73,6 @@
                         </thead>
                         <tbody>
                             @foreach ($products as $product)
-                            @if ($product->status->id == 3)
                             <tr>
                                 <td>{{ $product->order_id }}</td>
                                 <td>{{ $product->owner?->nama }}</td>
@@ -85,11 +84,9 @@
                                     <a href="{{ route('product.show', $product->id) }}" class="btn btn-info">Lihat</a>
                                 </td>
                             </tr>
-                            @endif
                             @endforeach
                         </tbody>
                     </table>
-
                     {{-- Pagination links --}}
                     <div class="pagination">
                         {{ $products->links() }}

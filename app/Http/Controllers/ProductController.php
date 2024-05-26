@@ -242,4 +242,10 @@ class ProductController extends Controller
         return view('product.index', compact('products', 'statuses'));
     }
 
+    public function printReceipt($id)
+{
+    $product = Product::with(['owner', 'category', 'status', 'pembayaran'])->findOrFail($id);
+    return view('product.print', compact('product'));
+}
+
 }

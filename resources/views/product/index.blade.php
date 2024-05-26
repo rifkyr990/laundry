@@ -76,6 +76,7 @@
                                     <th scope="col">Customer Name</th>
                                     <th scope="col">Total Price</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Nota</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -101,9 +102,12 @@
                                         @endif
                                     </td>
                                     <td>
+                                        <a href="{{ route('kirimnota', $data->id) }}"
+                                            class="btn btn-success btn-sm">Kirim</a>
+                                            <a href="{{ route('products.print', $data->id) }}" class="btn btn-secondary btn-sm" target="_blank">Print</a>
+                                    </td>
+                                    <td>
                                         <form action="{{ route('destroy', $data->id) }}" method="post">
-                                            <a href="{{ route('kirimnota', $data->id) }}"
-                                                class="btn btn-success btn-sm">Kirim</a>
                                             <a href="{{ route('product.show', $data->id) }}"
                                                 class="btn btn-info btn-sm">Detail</a>
                                             <a href="{{ route('product.edit', $data->id) }}"

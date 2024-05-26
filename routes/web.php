@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -37,6 +38,7 @@ Route::delete('/{product}', [App\Http\Controllers\ProductController::class, 'des
 Route::get('setstatus/{id}', [App\Http\Controllers\ProductController::class, 'updateStatus'])->name('setStatus');
 Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 Route::get('kirimnota/{id}', [App\Http\Controllers\ProductController::class, 'kirimnota'])->name('kirimnota');
+Route::get('/products/print/{id}', [ProductController::class, 'printReceipt'])->name('products.print');
 
 Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])->name('confirm');
 Route::get('/myorder', [App\Http\Controllers\ProductController::class, 'myOrder'])->name('myorder');
