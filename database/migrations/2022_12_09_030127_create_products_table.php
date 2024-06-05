@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('order_id');
-            $table->date('tanggal');
+            $table->date('tanggal_masuk');
+            $table->date('tanggal_selesai');
             $table->decimal('berat', 8, 2);
             $table->integer('total')->nullable();
             $table->string('telp')->nullable();

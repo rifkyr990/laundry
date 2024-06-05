@@ -29,7 +29,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mt-5">
             <div class="container mt-4">
-                <h2 class="mb-4">Daftar Produk</h2>
+                <h2 class="mb-4">Laporan</h2>
                 <form method="GET" action="{{ route('report') }}">
                     <div class="row">
                         <div class="col-md-3">
@@ -54,7 +54,7 @@
                         <div class="col-md-3">
                             <br />
                             <button class="btn btn-primary" type="submit">Filter</button>
-                            <button type="submit" name="export" value="excel" class="btn btn-success">Download Excel</button>
+                            <button type="submit" name="export" value="excel" class="btn btn-outline-success">Excel</button>
                         </div>
                     </div>
                 </form>
@@ -65,7 +65,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
-                                <th>Nama Produk</th>
+                                <th>Nama Pelanggan</th>
                                 <th>Status</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Aksi</th>

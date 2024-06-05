@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Models\Owner;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,13 +45,14 @@ Route::get('confirm', [App\Http\Controllers\OwnerController::class, 'confirm'])-
 Route::get('/myorder', [App\Http\Controllers\ProductController::class, 'myOrder'])->name('myorder');
 Route::get('/myorders', [App\Http\Controllers\OwnerController::class, 'finish'])->name('myorders');
 Route::get('/owner/', [App\Http\Controllers\OwnerController::class, 'index'])->name('owner');
-Route::post('/store', [App\Http\Controllers\OwnerController::class, 'store'])->name('owner.store');
+Route::post('/owners', [App\Http\Controllers\OwnerController::class, 'store'])->name('owner.store');
 Route::get('/owner/create', [App\Http\Controllers\OwnerController::class, 'create'])->name('owner.create');
 Route::get('/owner/show/{owner}', [App\Http\Controllers\OwnerController::class, 'show'])->name('owner.show');
 Route::get('/owner/detail/{owner}', [App\Http\Controllers\OwnerController::class, 'detail'])->name('owner.detail');
 Route::get('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'edit'])->name('owner.edit');
 Route::put('/owner/edit/{owner}', [App\Http\Controllers\OwnerController::class, 'update'])->name('owner.update');
 Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'hapus'])->name('hapus');
+Route::get('/owner/search', [App\Http\Controllers\OwnerController::class, 'search'])->name('customer.search');
 
 Route::get('/layanan/', [App\Http\Controllers\CategoryController::class, 'index'])->name('layanan');
 Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('layanan.store');

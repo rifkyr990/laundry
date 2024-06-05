@@ -33,7 +33,8 @@
                     </div>
                     <div class="form-group col-sm-12 mt-2">
                         <label for="jenis_id"><strong>Tambahan Item *optional</strong></label>
-                        <select class="js-example-basic-multiple form-select" name="jenis_id[]" id="jenis_id" multiple="multiple">
+                        <select class="js-example-basic-multiple form-select" name="jenis_id[]" id="jenis_id"
+                            multiple="multiple">
                             @foreach ($jenis as $data)
                             <option value="{{$data->id}}">{{ $data->nama_jenis }}</option>
                             @endforeach
@@ -47,6 +48,24 @@
                     <div class="form-group col-sm-12">
                         <strong>Total berat/Kg</strong>
                         <input type="number" name="berat" id="berat" class="form-control" onkeyup="sum();">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label for="tanggal_masuk">Tanggal Masuk:</label>
+                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control" value="{{ now()->toDateString() }}"
+                            readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label for="tanggal_selesai">Tanggal Selesai:</label>
+                        <input type="date" id="tanggal_selesai" class="form-control" name="tanggal_selesai"
+                            value="{{ isset($category) ? now()->addDays($category->estimasi)->toDateString() : '' }}" readonly>
                     </div>
                 </div>
             </div>

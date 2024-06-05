@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Product extends Model
 {
@@ -12,7 +13,8 @@ class Product extends Model
     
     protected $fillable = [
         'jenis',
-        'tanggal',
+        'tanggal_masuk',
+        'tanggal_selesai',
         'berat',
         'jenis_id',
         'pembayaran_id',
@@ -27,6 +29,18 @@ class Product extends Model
     protected $casts = [
         'jenis_id' => 'array',
     ];
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::creating(function ($product) {
+            $product->tanggal_masuk = Carbon::today();
+            $category = $product->category;
+            if ($category) {
+                $product->tanggal_selesai = Carbon::today()->addDays($category->estimasi);
+            }
+        });
+    }
     
     public function jenis()
     {

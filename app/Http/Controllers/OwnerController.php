@@ -135,4 +135,12 @@ class OwnerController extends Controller
 
         return redirect()->route('owner');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $owners = Owner::where('nama', 'LIKE', "%{$query}%")->get();
+
+        return view('owner.index', compact('owners'));
+    }
 }

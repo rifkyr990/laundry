@@ -103,18 +103,18 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('kirimnota', $data->id) }}"
-                                            class="btn btn-success btn-sm">Kirim</a>
-                                            <a href="{{ route('products.print', $data->id) }}" class="btn btn-secondary btn-sm" target="_blank">Print</a>
+                                            class="btn btn-success btn-sm"><i class="bi bi-whatsapp"></i>   Kirim</a>
+                                            <a href="{{ route('products.print', $data->id) }}" class="btn btn-secondary btn-sm" target="_blank"><i class="bi bi-printer"></i>   Print</a>
                                     </td>
                                     <td>
                                         <form action="{{ route('destroy', $data->id) }}" method="post">
                                             <a href="{{ route('product.show', $data->id) }}"
-                                                class="btn btn-info btn-sm">Detail</a>
+                                                class="btn btn-info btn-sm"><i class="bi bi-eye"></i>   Detail</a>
                                             <a href="{{ route('product.edit', $data->id) }}"
-                                                class="btn btn-primary btn-sm">Edit</a>
+                                                class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>  Edit</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="form btn btn-danger btn-sm">Hapus</button>
+                                            <button type="submit" class="form btn btn-danger btn-sm"><i class="bi bi-trash"></i>    Hapus</button>
                                         </form>
                                     </td>
                                 </tr>

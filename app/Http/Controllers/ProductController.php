@@ -23,7 +23,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-{
+    {
     $statuses = Status::with('products')->get(); // Memuat status dan produk terkait
     $todayDate = Carbon::now()->format('Y-m-d');
     $owners = Owner::with('products')->get();
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     // Kembalikan ke view dengan data produk dan status yang tersedia
     return view('product.index', compact('products', 'statuses', 'owners'));
-}
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -50,7 +50,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $jenis = Jenis::with('products')->get();
+        $jenis = Jenis::all();
         $pembayaran = Pembayaran::with('products')->get();
         $categories = Category::with('products')->get();
         $statuses = Status::with('products')->get();
@@ -92,8 +92,12 @@ class ProductController extends Controller
         $categoryPrice = $product->category->harga ?? 0;
         $total = ($product->berat * $categoryPrice) + $totalTambahan;
         $product->total = $total;
-        $product->tanggal = Date::now();
-        // Mengambil data pemilik berdasarkan owner_id yang dipilih
+        $product->tanggal_masuk = Date::now();
+        // Ambil jenis layanan yang dipilih
+        $category = Category::find($data['category_id']);
+        if ($category) {
+            $product->tanggal_selesai = Carbon::now()->addDays($category->estimasi);
+        }
         $owner = Owner::find($data['owner_id']);
         if($owner) {
             // Jika pemilik ditemukan, maka isi nomor telepon (telp) dari pemilik
@@ -222,6 +226,8 @@ class ProductController extends Controller
         $pesan = "Detail Pesanan:\n\n" .
             "ID Pesanan: " . $product->order_id . "\n" .
             "Nama: " . $product->owner->nama . "\n" .
+            "Tanggal Masuk: ". $product->tanggal_masuk. "\n".
+            "Tanggal Keluar: ". $product->tanggal_selesai. "\n".
             "Jenis Layanan: " . $product->category->nama_layanan . "\n" .
             "Status Pesanan: " . $product->status->nama_status . "\n" .
             "Status Pembayaran: " . $product->pembayaran->nama_pembayaran . "\n" .

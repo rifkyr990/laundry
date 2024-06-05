@@ -72,12 +72,12 @@
                                 <td>
                                     <form action="{{ route('layanan.destroy', $data->id) }}" method="post">
                                         <a href="{{ route('layanan.edit', $data->id) }}"
-                                            class="btn btn-primary btn-sm">Edit</a>
+                                            class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>  Edit</a>
 
                                         @csrf
                                         @method('DELETE')
 
-                                        <button type="submit" class="form btn btn-danger btn-sm">Hapus</button>
+                                        <button type="submit" class="form btn btn-danger btn-sm"><i class="bi bi-trash"></i>   Hapus</button>
                                     </form>
                                 </td>
                             </tr>
