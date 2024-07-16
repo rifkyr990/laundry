@@ -20,10 +20,9 @@
         <div class="row mt-3">
             <div class="form-group col-sm-6 mb-3">
                 <div class="row">
-                    <div class="col-sm-12 mb-3">
+                    <div class="form-group col-sm-12 my-2">
                         <label for="owner_id"><strong>Pelanggan</strong></label>
-                        <select class="form-select" name="owner_id" id="owner_id" require>
-                            <option value="" selected>Nama Pelanggan</option>
+                        <select class="form-select js-example-basic-multiple" name="owner_id" id="owner_id" require>
                             @foreach ($owner as $data)
                             <option value="{{$data->id}}" onkeyup="sum();">{{ $data->nama }} - {{ $data->telp }}
                             </option>
@@ -31,14 +30,21 @@
                         </select>
                         <span>* klik untuk pelanggan baru <a href="{{ route('owner.create') }}">Registrasi</a></span>
                     </div>
-                    <div class="form-group col-sm-12 mt-2">
-                        <label for="jenis_id"><strong>Tambahan Item *optional</strong></label>
-                        <select class="js-example-basic-multiple form-select" name="jenis_id[]" id="jenis_id"
-                            multiple="multiple">
-                            @foreach ($jenis as $data)
-                            <option value="{{$data->id}}">{{ $data->nama_jenis }}</option>
-                            @endforeach
-                        </select>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-6 mb-3">
+                <div class="row">
+                    <div class="form-group- col-sm-12 my-2">
+                        <div class="form-group col-sm-12 my-2">
+                            <label for="jenis_id"><strong>Tambahan Item *optional</strong></label>
+                            <select class="js-example-basic-multiple form-select" name="jenis_id[]" id="jenis_id"
+                                multiple="multiple">
+                                @foreach ($jenis as $data)
+                                <option value="{{$data->id}}">{{ $data->nama_jenis }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,23 +60,15 @@
             <div class="form-group col-sm-6">
                 <div class="row">
                     <div class="form-group col-sm-12">
-                        <label for="tanggal_masuk">Tanggal Masuk:</label>
-                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control" value="{{ now()->toDateString() }}"
-                            readonly>
+                        <label for="tanggal_masuk" class="fw-bold">Tanggal Masuk:</label>
+                        <input type="date" id="tanggal_masuk" name="tanggal_masuk" class="form-control"
+                            value="{{ now()->toDateString() }}" readonly>
                     </div>
                 </div>
             </div>
-            <div class="form-group col-sm-6">
-                <div class="row">
-                    <div class="form-group col-sm-12">
-                        <label for="tanggal_selesai">Tanggal Selesai:</label>
-                        <input type="date" id="tanggal_selesai" class="form-control" name="tanggal_selesai"
-                            value="{{ isset($category) ? now()->addDays($category->estimasi)->toDateString() : '' }}" readonly>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group col-sm-6">
-                <label for="category_id"><strong>Jenis Layanan</strong></label>
+
+            <div class="form-group col-sm-6 my-2">
+                <label for="category_id"><strong>Jenis Layanan:</strong></label>
                 <select class="form-select" name="category_id" id="category_id">
                     <option value="" selected>Pilih Jenis Layanan</option>
                     @foreach ($categories as $category)
@@ -78,7 +76,26 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group col-sm-6 mt-4 text-end">
+            <div class="form-group col-sm-6 my-2">
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        <label for="tanggal_selesai" class="fw-bold">Tanggal Selesai:</label>
+                        <input type="date" id="tanggal_selesai" class="form-control" name="tanggal_selesai"
+                            value="{{ isset($category) ? now()->addDays($category->estimasi)->toDateString() : '' }}"
+                            readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" hidden>
+                <div class="form-group">
+                    <label for="status_pembayaran"><strong>Status pembayaran</strong></label>
+                    <select class="form-control" name="status_pembayaran" id="status_pembayaran">
+                        <option value="belum lunas" selected>Belum lunas</option>
+                        <option value="lunas">Lunas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-12 mt-4 text-end">
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="{{ route('product')}}" class="btn btn-danger">Kembali</a>
             </div>

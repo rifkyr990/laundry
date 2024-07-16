@@ -119,7 +119,7 @@
             <div class="row">
                 <!-- Pricing Table-->
                 @foreach ($layanan as $data)
-                <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="fade-right" data-aos-duration="1000">
+                <div class="col-lg-4 mb-5 mb-lg-0 text-center" data-aos="zoom-in" data-aos-duration="1000">
                     <div class="bg-white p-5 rounded-lg shadow">
                         <h1 class="h6 text-uppercase font-weight-bold mb-4">{{$data->nama_layanan}}</h1>
                         <h2 class="h1 font-weight-bold">Rp {{$data->harga}}<span class="text-small font-weight-normal ml-2">/

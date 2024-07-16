@@ -38,11 +38,10 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label for="status_id"><strong>Status pembayaran</strong></label>
-                    <select class="form-control" name="pembayaran_id" id="pembayaran_id">
-                        @foreach ($pembayaran as $data)
-                        <option value="{{$data->id}}" onkeyup="sum();">{{ $data->nama_pembayaran }}</option>
-                        @endforeach
+                    <label for="status_pembayaran"><strong>Status pembayaran</strong></label>
+                    <select class="form-control" name="status_pembayaran" id="status_pembayaran">
+                        <option value="belum lunas">Belum lunas</option>
+                        <option value="lunas">Lunas</option>
                     </select>
                 </div>
             </div>
@@ -74,8 +73,8 @@
 
             <div class="col-sm-12">
                 <div class="form-group">
-                    <label for="status_id"><strong>Status pesanan</strong></label>
-                    <select class="form-control" name="status_id" id="status_id">
+                    <label for="status_pesanan"><strong>Status pesanan</strong></label>
+                    <select class="form-control" name="status_pesanan" id="status_pesanan">
                         @foreach ($status as $statuses)
                         <option value="{{$product->status->id}}">Pilih Status</option>
                         <option value="{{ $statuses->id }}" {{ $statuses->id == $data->status_id ? 'selected' : '' }}>

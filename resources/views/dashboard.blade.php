@@ -5,31 +5,7 @@
     @if (Auth::user()->role_as == '1')
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5 pt-4">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active bg-primary text-light" href="{{ route('dashboard') }}">
-                                Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('product') }}">Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('owner') }}">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('layanan') }}">Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('report') }}">Reports</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
-
+            @include('partials.sidebar')
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mt-5">
                 <div class="container mt-5">
                     <div class="row">

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Jenis;
 use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class JenisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $layanans = Category::all();
-        return view('layanan.index', compact('layanans'));
+        $jenis = Jenis::all();
+        return view('jenis.index', compact('jenis'));
     }
 
     /**
@@ -28,9 +27,8 @@ class CategoryController extends Controller
     public function create()
     {
         $jenis = Jenis::all();
-        $categories = Category::all();
 
-        return view('create', compact('jenis', 'categories'));
+        return view('create', compact('jenis'));
     }
 
     /**
@@ -41,29 +39,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_layanan' => 'required',
-            'estimasi' => 'required',
+            'nama_jenis' => 'required',
             'harga' => 'required'
         ]);
 
         $data = $request->all();
-        $layanan = new Category;
-        $layanan->nama_layanan = $data['nama_layanan'];
-        $layanan->estimasi = $data['estimasi'];
-        $layanan->harga = $data['harga'];
-        $layanan->save();
+        $jenis = new Jenis;
+        $jenis->nama_jenis = $data['nama_jenis'];
+        $jenis->harga = $data['harga'];
+        $jenis->save();
 
         return redirect()->back()->with('success', 'berhasil ditambah');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(category $category)
-    {
-        
     }
 
     /**
@@ -71,9 +57,9 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
+    public function edit(Jenis $jenis)
     {
-        return view('layanan.edit', compact('category'));
+        return view('jenis.edit', compact('jenis'));
     }
 
     /**
@@ -81,12 +67,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, jenis $Jenis)
     {
         $input = $request->all();
-        $category->update($input);
+        $Jenis->update($input);
 
-        return redirect()->route('layanan')->with('success', 'berhasil diupdate');
+        return redirect()->route('jenis')->with('success', 'berhasil diupdate');
     }
 
     /**
@@ -94,10 +80,10 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $layanan)
+    public function destroy(Jenis $jenis)
     {
-        $layanan->delete();
+        $jenis->delete();
 
-        return redirect()->route('layanan')->with('success', 'berhasil dihapus');
+        return redirect()->route('jenis')->with('success', 'berhasil dihapus');
     }
 }

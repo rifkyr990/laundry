@@ -15,19 +15,21 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('order_id');
             $table->date('tanggal_masuk');
             $table->date('tanggal_selesai');
+            $table->string('status_pembayaran')->nullable();
             $table->decimal('berat', 8, 2);
             $table->integer('total')->nullable();
             $table->string('telp')->nullable();
-            $table->json('jenis_id');
-            $table->integer('category_id');
-
-            $table->integer('pembayaran_id')->default('1');
+            $table->unsignedBigInteger('category_id');
             $table->integer('status_id')->default('1');
-            $table->integer('owner_id');
+            $table->unsignedBigInteger('owner_id');
+            
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('owner_id')->references('id')->on('owners');
             $table->timestamps();
         });
     }

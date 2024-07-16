@@ -17,7 +17,7 @@ class Product extends Model
         'tanggal_selesai',
         'berat',
         'jenis_id',
-        'pembayaran_id',
+        'status_pembayaran',
         'category_id',
         'status_id',
         'owner_id',
@@ -44,13 +44,9 @@ class Product extends Model
     
     public function jenis()
     {
-        return $this->belongsTo(Jenis::class, 'jenis_id');
+        return $this->belongsToMany(Jenis::class, 'jenis_product', 'product_id', 'jenis_id');
     }
 
-    public function pembayaran()
-    {
-        return $this->belongsTo(Pembayaran::class);
-    }
 
     public function category()
     {

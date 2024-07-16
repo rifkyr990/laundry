@@ -7,16 +7,12 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mt-5">
             <div class="container mt-4">
                 <h2 class="mb-4">Daftar Layanan</h2>
-                <form method="post" action="{{ route('layanan.store') }}">
+                <form method="post" action="{{ route('jenis.store') }}">
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="start_date">Nama Layanan :</label>
-                            <input type="text" name="nama_layanan" id="nama_layanan" class="form-control">
-                        </div>
-                        <div class="col-md-3">
-                            <label for="end_date">Estimasi :</label>
-                            <input type="text" name="estimasi" id="estimasi" class="form-control">
+                            <label for="start_date">Jenis item :</label>
+                            <input type="text" name="nama_jenis" id="nama_jenis" class="form-control">
                         </div>
                         <div class="col-md-3">
                             <label for="end_date">Harga :</label>
@@ -34,20 +30,18 @@
                     <table class="table table-striped">
                         <thead class="thead-dark">
                             <tr>
-                                <th>Nama Layanan</th>
-                                <th>Estimasi</th>
+                                <th>Nama Jenis</th>
                                 <th>Harga</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($layanans as $data)
+                            @foreach ($jenis as $data)
                             <tr>
-                                <td>{{ $data->nama_layanan }}</td>
-                                <td>{{ $data->estimasi }} hari</td>
+                                <td>{{ $data->nama_jenis }}</td>
                                 <td>{{ $data->harga }}</td>
                                 <td>
-                                    <form action="{{ route('layanan.destroy', $data->id) }}" method="post">
+                                    <form action="{{ route('jenis.destroy', $data->id) }}" method="post">
                                         <a href="{{ route('layanan.edit', $data->id) }}"
                                             class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i>  Edit</a>
 

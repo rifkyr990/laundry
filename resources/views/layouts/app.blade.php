@@ -57,17 +57,19 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
-                                href="{{ route('home') }}">Home</a></li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#service">Services</a>
+                                href="{{ route('home') }}">Beranda</a></li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#service">Layanan</a>
                         </li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#article">Article</a>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#article">Artikel</a>
                         </li>
-                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#location">Location</a>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="#location">Lokasi</a>
+                        </li>
+                        <li class="nav-item mx-2"><a class="text-decoration-none nav-link" href="{{ route('track.order') }}">Lacak</a>
                         </li>
                         <li class="nav-item mx-2"><a class="text-decoration-none nav-link"
-                                href="{{ route('about') }}">About</a></li>
+                                href="{{ route('about') }}">Tentang</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                         </li>
                         @endif
                         @else
@@ -124,7 +126,6 @@
     <script>
         $(document).ready(function () {
             $('.js-example-basic-multiple').select2({
-                placeholder: 'Pilih Item',
             });
         });
 

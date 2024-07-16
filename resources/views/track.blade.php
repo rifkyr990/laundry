@@ -30,8 +30,11 @@
                 <hr>
                 <div class="row">
                     <div class="col-md-6">
-                        <strong>Jenis laundry :</strong>
-                        <p>{{ $product->jenis }}</p>
+                        <strong>Jenis laundry :</strong><br>
+                        @foreach($product->jenis as $index => $jenis)
+                            {{ $index > 0 ? ', ' : '' }}
+                            {{ $jenis->nama_jenis }}
+                        @endforeach
                     </div>
                     <div class="col-md-6">
                         <strong>Layanan :</strong>

@@ -55,13 +55,18 @@ Route::delete('/owner/{owner}', [App\Http\Controllers\OwnerController::class, 'h
 Route::get('/owner/search', [App\Http\Controllers\OwnerController::class, 'search'])->name('customer.search');
 
 Route::get('/layanan/', [App\Http\Controllers\CategoryController::class, 'index'])->name('layanan');
-Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('layanan.store');
+Route::post('/layanan/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('layanan.store');
 Route::get('/layanan/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('layanan.create');
 Route::get('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('layanan.edit');
 Route::put('/layanan/edit/{category}', [App\Http\Controllers\CategoryController::class, 'update'])->name('layanan.update');
 Route::delete('/layanan/{layanan}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('layanan.destroy');
 
-Route::get('complaint', [App\Http\Controllers\OwnerController::class, 'complaint'])->name('complaint');
-Route::post('/addcomplaint', [App\Http\Controllers\OwnerController::class, 'addcomplaint'])->name('addcomplaint');
+Route::get('/jenis/', [App\Http\Controllers\JenisController::class, 'index'])->name('jenis');
+Route::post('/store', [App\Http\Controllers\JenisController::class, 'store'])->name('jenis.store');
+Route::get('/jenis/create', [App\Http\Controllers\JenisController::class, 'create'])->name('jenis.create');
+Route::get('/jenis/edit/{category}', [App\Http\Controllers\JenisController::class, 'edit'])->name('jenis.edit');
+Route::put('/jenis/edit/{category}', [App\Http\Controllers\JenisController::class, 'update'])->name('jenis.update');
+Route::delete('/jenis/{jenis}', [App\Http\Controllers\JenisController::class, 'destroy'])->name('jenis.destroy');
+
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/report', [App\Http\Controllers\DashboardController::class, 'filterProducts'])->name('report');

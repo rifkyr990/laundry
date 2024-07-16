@@ -6,31 +6,7 @@
     @if (Auth::user()->role_as == '1')
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar mt-5 pt-4">
-                <div class="sidebar-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="{{ route('dashboard') }}">
-                                Dashboard <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bg-primary text-light" href="{{ route('product') }}">Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('owner') }}">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('layanan') }}">Service</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('report') }}">Reports</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
-
+            @include('partials.sidebar')
             <main role="main" class="col-12 col-md-9 ml-sm-auto col-lg-10 px-md-4 mt-5">
                 <div class="container mt-4">
                     <h2 class="mb-4">Pesanan</h2>
@@ -81,7 +57,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($products as $data)
+                                @forelse ($products as $data)
                                 <tr>
                                     <th scope="row">{{ $data->id }}</th>
                                     <td>{{ $data->order_id }}</td>
@@ -91,10 +67,10 @@
                                         @if ($data->status->id == 1)
                                         <a href="{{ route('setStatus', $data->id) }}?status_id=2"
                                             class="btn btn-danger btn-sm">Proses</a>
-                                        @elseif ($data->status->id == 2 && $data->pembayaran->id == 1)
+                                        @elseif ($data->status->id == 2 && $data->status_pembayaran == 'belum lunas')
                                         <a href="{{ route('setStatus', $data->id) }}?status_id=3"
                                             class="btn btn-warning btn-sm disabled">Selesai</a>
-                                        @elseif ($data->status->id == 2 && $data->pembayaran->id == 2)
+                                        @elseif ($data->status->id == 2 && $data->status_pembayaran == 'lunas')
                                         <a href="{{ route('setStatus', $data->id) }}?status_id=3"
                                             class="btn btn-warning btn-sm">Selesai</a>
                                         @else
@@ -118,7 +94,11 @@
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">Pesanan tidak ada.</td>
+                                </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

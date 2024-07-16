@@ -51,19 +51,13 @@ class ProductController extends Controller
     public function create()
     {
         $jenis = Jenis::all();
-        $pembayaran = Pembayaran::with('products')->get();
         $categories = Category::with('products')->get();
         $statuses = Status::with('products')->get();
         $owner = Owner::with('products')->get();
 
-        return view('product.create', compact('jenis', 'pembayaran', 'categories', 'statuses', 'owner'));
+        return view('product.create', compact('jenis', 'categories', 'statuses', 'owner'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function tambah(Request $request)
     {
         $data = $request->all();
@@ -72,14 +66,14 @@ class ProductController extends Controller
         $product = new Product;
         $product->order_id = $idOrder;
         $product->owner_id = $data['owner_id'];
+        $product->status_pembayaran = $data['status_pembayaran'];
         $product->category_id = $data['category_id'];
         $product->berat = $data['berat'];
-        // Mengonversi nilai string menjadi integer sebelum menyimpannya sebagai array
-        $jenis_id = array_map('intval', $request->jenis_id ?? []);
-        // Menggunakan json_encode untuk menyimpan array integer ke dalam kolom jenis_id
-        $product->jenis_id = json_encode($jenis_id);
 
-        // Menghitung total harga dari tambahan barang
+    // Convert the string values to integers for jenis_id
+        $jenis_id = array_map('intval', $request->jenis_id ?? []);
+
+    // Calculate the total price for additional items
         $totalTambahan = 0;
         foreach ($jenis_id as $jenis) {
             $tambahan = Jenis::find($jenis);
@@ -88,30 +82,33 @@ class ProductController extends Controller
             }
         }
 
-        // Menghitung total harga keseluruhan
-        $categoryPrice = $product->category->harga ?? 0;
+        // Calculate the overall total price
+        $category = Category::find($data['category_id']);
+        $categoryPrice = $category->harga ?? 0;
         $total = ($product->berat * $categoryPrice) + $totalTambahan;
         $product->total = $total;
         $product->tanggal_masuk = Date::now();
-        // Ambil jenis layanan yang dipilih
-        $category = Category::find($data['category_id']);
+
         if ($category) {
             $product->tanggal_selesai = Carbon::now()->addDays($category->estimasi);
         }
+
         $owner = Owner::find($data['owner_id']);
-        if($owner) {
-            // Jika pemilik ditemukan, maka isi nomor telepon (telp) dari pemilik
+        if ($owner) {
             $product->telp = $owner->telp;
         } else {
-            // Handle jika pemilik tidak ditemukan
-            // Misalnya, mengatur default value untuk telp atau memberikan pesan kesalahan
-            $product->telp = ''; // Atau isi dengan nilai default
+            $product->telp = ''; // Default value or handle the case when owner is not found
         }
+
         $product->user_id = auth()->id();
         $product->save();
 
+    // Sync the jenis relationship
+        $product->jenis()->sync($jenis_id);
+
         return redirect()->route('product')->with('success', 'Pesanan berhasil diinput!');
     }
+
 
 
 
@@ -145,12 +142,11 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $pembayaran = Pembayaran::all();
         $jenis = Jenis::all();
         $categories = Category::all();
         $status = Status::all();
 
-        return view('product.edit', compact('pembayaran', 'jenis', 'categories', 'status', 'product'));
+        return view('product.edit', compact('jenis', 'categories', 'status', 'product'));
     }
 
     /**
